@@ -1,5 +1,6 @@
 package com.driver
 
+
 import android.app.Activity
 import android.app.Dialog
 import android.content.BroadcastReceiver
@@ -7,42 +8,24 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Typeface
 import android.os.AsyncTask
+import android.os.Bundle
 import android.os.Handler
 import android.preference.PreferenceManager
-import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.CheckBox
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.Switch
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-
+import com.driver.Adapter.DriverAllTripAdapter
+import com.driver.utils.Common
+import com.driver.utils.DriverAllTripFeed
 import com.github.nkzawa.emitter.Emitter
 import com.github.nkzawa.socketio.client.IO
 import com.github.nkzawa.socketio.client.Socket
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu
 import com.koushikdutta.ion.Ion
-import com.driver.Adapter.DriverAllTripAdapter
-import com.driver.utils.Common
-import com.driver.utils.DriverAllTripFeed
-
-import org.json.JSONArray
-import org.json.JSONException
-import org.json.JSONObject
-
-
-import java.io.IOException
-import java.io.InputStream
-import java.net.URISyntaxException
-import java.util.ArrayList
-
 import cz.msebera.android.httpclient.client.ClientProtocolException
 import cz.msebera.android.httpclient.client.methods.HttpPost
 import cz.msebera.android.httpclient.entity.StringEntity
@@ -50,6 +33,13 @@ import cz.msebera.android.httpclient.impl.client.DefaultHttpClient
 import cz.msebera.android.httpclient.params.BasicHttpParams
 import cz.msebera.android.httpclient.params.HttpConnectionParams
 import cz.msebera.android.httpclient.protocol.HTTP
+import org.json.JSONArray
+import org.json.JSONException
+import org.json.JSONObject
+import java.io.IOException
+import java.io.InputStream
+import java.net.URISyntaxException
+import java.util.*
 
 class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripClickListener {
 
@@ -70,31 +60,31 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
     private var AllTripLayoutManager: RecyclerView.LayoutManager? = null
 
     lateinit var gps: GPSTracker
-     var latitude: Double = 0.toDouble()
-     var longitude: Double = 0.toDouble()
+    var latitude: Double = 0.toDouble()
+    var longitude: Double = 0.toDouble()
     private var mSocket: Socket? = null
     lateinit var driver_status: Switch
     lateinit var switch_driver_status: TextView
 
-     var DriverAllTripArray: ArrayList<DriverAllTripFeed>? = null
-    lateinit var DrvAllTripAdapter: DriverAllTripAdapter
+    var driverAllTripArray: ArrayList<DriverAllTripFeed>? = null
+    lateinit var drvAllTripAdapter: DriverAllTripAdapter
 
-     var common = Common()
+    var common = Common()
     lateinit var loader: LoaderView
     lateinit var filterDialog: Dialog
-     var FilterString = ""
+    var FilterString = ""
 
     lateinit var chk_all: CheckBox
     lateinit var chk_pen_book: CheckBox
     lateinit var chk_acp_book: CheckBox
     lateinit var chk_drv_can: CheckBox
     lateinit var chk_com_book: CheckBox
-     var checkAllClick = false
+    var checkAllClick = false
 
     lateinit var userPref: SharedPreferences
 
-     var receiver: BroadcastReceiver? = null
-     var savedInstState: Bundle? = null
+    var receiver: BroadcastReceiver? = null
+    var savedInstState: Bundle? = null
 
     /**
      * Listener for socket connection error.. listener registered at the time of socket connection
@@ -119,19 +109,20 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
 
         userPref = PreferenceManager.getDefaultSharedPreferences(this@DriverTripActivity)
 
-        layout_slidemenu = findViewById(R.id.layout_slidemenu) as RelativeLayout
-        txt_all_trip = findViewById(R.id.txt_all_trip) as TextView
-        layout_filter = findViewById(R.id.layout_filter) as RelativeLayout
-        recycle_all_trip = findViewById(R.id.recycle_all_trip) as RecyclerView
-        swipe_refresh_layout = findViewById(R.id.swipe_refresh_layout) as SwipeRefreshLayout
-        layout_background = findViewById(R.id.layout_background) as RelativeLayout
-        layout_no_recourd_found = findViewById(R.id.layout_no_recourd_found) as RelativeLayout
-        layout_recycleview = findViewById(R.id.layout_recycleview) as LinearLayout
+        layout_slidemenu = findViewById<RelativeLayout>(R.id.layout_slidemenu)
+        txt_all_trip = findViewById<TextView>(R.id.txt_all_trip)
+        layout_filter = findViewById<RelativeLayout>(R.id.layout_filter)
+        recycle_all_trip = findViewById<RecyclerView>(R.id.recycle_all_trip)
+        swipe_refresh_layout = findViewById<SwipeRefreshLayout>(R.id.swipe_refresh_layout)
+        layout_background = findViewById<RelativeLayout>(R.id.layout_background)
+        layout_no_recourd_found = findViewById<RelativeLayout>(R.id.layout_no_recourd_found)
+        layout_recycleview = findViewById<LinearLayout>(R.id.layout_recycleview)
 
         loader = LoaderView(this@DriverTripActivity)
 
         OpenSans_Bold = Typeface.createFromAsset(assets, getString(R.string.font_bold_opensans))
-        OpenSans_Regular = Typeface.createFromAsset(assets, getString(R.string.font_regular_opensans))
+        OpenSans_Regular =
+            Typeface.createFromAsset(assets, getString(R.string.font_regular_opensans))
 
         txt_all_trip.typeface = OpenSans_Bold
 
@@ -163,13 +154,19 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
             switch_driver_status.text = resources.getString(R.string.off_duty)
         }
         driver_status.setOnCheckedChangeListener { compoundButton, b ->
-            Log.d("is Checked", "is Checked = " + b + "==" + userPref.getBoolean("isBookingAccept", false))
+            Log.d(
+                "is Checked",
+                "is Checked = " + b + "==" + userPref.getBoolean("isBookingAccept", false)
+            )
             if (b) {
                 switch_driver_status.text = resources.getString(R.string.on_duty)
                 if (gps.canGetLocation()) {
                     try {
                         mSocket = IO.socket(SERVER_IP)
-                        mSocket!!.emit(com.github.nkzawa.socketio.client.Socket.EVENT_CONNECT_ERROR, onConnectError)
+                        mSocket!!.emit(
+                            Socket.EVENT_CONNECT_ERROR,
+                            onConnectError
+                        )
                         mSocket!!.connect()
                         Common.socket = mSocket
                     } catch (e: URISyntaxException) {
@@ -177,7 +174,15 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
                         Log.d("connected ", "connected error = " + e.message)
                     }
 
-                    Common.socketFunction(this@DriverTripActivity, mSocket!!, driver_status, latitude, longitude, common, userPref)
+                    Common.socketFunction(
+                        this@DriverTripActivity,
+                        mSocket!!,
+                        driver_status,
+                        latitude,
+                        longitude,
+                        common,
+                        userPref
+                    )
                 } else {
                     switch_driver_status.text = resources.getString(R.string.off_duty)
                     driver_status.isChecked = false
@@ -213,16 +218,13 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
             }
         }
 
-        recycle_all_trip = findViewById(R.id.recycle_all_trip) as RecyclerView
-        swipe_refresh_layout = findViewById(R.id.swipe_refresh_layout) as SwipeRefreshLayout
-        layout_recycleview = findViewById(R.id.layout_recycleview) as LinearLayout
+        recycle_all_trip = findViewById<RecyclerView>(R.id.recycle_all_trip)
+        swipe_refresh_layout = findViewById<SwipeRefreshLayout>(R.id.swipe_refresh_layout)
+        layout_recycleview = findViewById<LinearLayout>(R.id.layout_recycleview)
 
         AllTripLayoutManager = LinearLayoutManager(this)
         recycle_all_trip.layoutManager = AllTripLayoutManager
-
-
         layout_slidemenu.setOnClickListener { slidingMenu.toggle() }
-
         swipe_refresh_layout.setOnRefreshListener {
             if (Common.isNetworkAvailable(this@DriverTripActivity)) {
                 recycle_all_trip.isClickable = false
@@ -252,10 +254,20 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
                     clickfilter.putBoolean("setFilter", allFilter)
                     clickfilter.commit()
 
-                    if (userPref.getInt("pending booking", 4) == 0 && userPref.getInt("accepted booking", 4) == 1 && userPref.getInt("driver cancel", 4) == 2 && userPref.getInt("completed booking", 4) == 3) {
+                    if (userPref.getInt(
+                            "pending booking",
+                            4
+                        ) == 0 && userPref.getInt(
+                            "accepted booking",
+                            4
+                        ) == 1 && userPref.getInt(
+                            "driver cancel",
+                            4
+                        ) == 2 && userPref.getInt("completed booking", 4) == 3
+                    ) {
                         FilterString = ""
                     }
-                    FilterAllDriverTrips(0, "", true)
+                    filterAllDriverTrips(0, "", true)
                     FilterString = ""
 
                 } else {
@@ -304,10 +316,20 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
                     clickfilter.putBoolean("setFilter", allFilter)
                     clickfilter.commit()
 
-                    if (userPref.getInt("pending booking", 4) == 0 && userPref.getInt("accepted booking", 4) == 1 && userPref.getInt("driver cancel", 4) == 2 && userPref.getInt("completed booking", 4) == 3) {
+                    if (userPref.getInt(
+                            "pending booking",
+                            4
+                        ) == 0 && userPref.getInt(
+                            "accepted booking",
+                            4
+                        ) == 1 && userPref.getInt(
+                            "driver cancel",
+                            4
+                        ) == 2 && userPref.getInt("completed booking", 4) == 3
+                    ) {
                         FilterString = ""
                     }
-                    FilterAllDriverTrips(0, "filter", false)
+                    filterAllDriverTrips(0, "filter", false)
                     FilterString = ""
 
                 } else {
@@ -344,25 +366,41 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
 
         chk_all = filterDialog.findViewById(R.id.chk_all) as CheckBox
         val layout_all_check = filterDialog.findViewById(R.id.layout_all_check) as RelativeLayout
-        CheckBoxChecked(layout_all_check, chk_all, "all")
+        checkBoxChecked(layout_all_check, chk_all, "all")
 
         chk_pen_book = filterDialog.findViewById(R.id.chk_pen_book) as CheckBox
-        val layour_pen_book_check = filterDialog.findViewById(R.id.layour_pen_book_check) as RelativeLayout
-        CheckBoxChecked(layour_pen_book_check, chk_pen_book, "pending booking")
+        val layour_pen_book_check =
+            filterDialog.findViewById(R.id.layour_pen_book_check) as RelativeLayout
+        checkBoxChecked(layour_pen_book_check, chk_pen_book, "pending booking")
 
         chk_acp_book = filterDialog.findViewById(R.id.chk_acp_book) as CheckBox
-        val layout_acp_book_check = filterDialog.findViewById(R.id.layout_acp_book_check) as RelativeLayout
-        CheckBoxChecked(layout_acp_book_check, chk_acp_book, "accept booking")
+        val layout_acp_book_check =
+            filterDialog.findViewById(R.id.layout_acp_book_check) as RelativeLayout
+        checkBoxChecked(layout_acp_book_check, chk_acp_book, "accept booking")
 
         chk_com_book = filterDialog.findViewById(R.id.chk_com_book) as CheckBox
-        val layout_com_book_check = filterDialog.findViewById(R.id.layout_com_book_check) as RelativeLayout
-        CheckBoxChecked(layout_com_book_check, chk_com_book, "completed booking")
+        val layout_com_book_check =
+            filterDialog.findViewById(R.id.layout_com_book_check) as RelativeLayout
+        checkBoxChecked(layout_com_book_check, chk_com_book, "completed booking")
 
         chk_drv_can = filterDialog.findViewById(R.id.chk_drv_can) as CheckBox
-        val layout_drv_reject_check = filterDialog.findViewById(R.id.layout_drv_reject_check) as RelativeLayout
-        CheckBoxChecked(layout_drv_reject_check, chk_drv_can, "driver cancel")
+        val layout_drv_reject_check =
+            filterDialog.findViewById(R.id.layout_drv_reject_check) as RelativeLayout
+        checkBoxChecked(layout_drv_reject_check, chk_drv_can, "driver cancel")
 
-        Log.d("checkbox checked", "checkbox checked = " + userPref.getInt("pending booking", 4) + "==" + userPref.getInt("accepted booking", 4) + "==" + userPref.getInt("driver cancel", 4) + "==" + userPref.getInt("completed booking", 4))
+        Log.d(
+            "checkbox checked",
+            "checkbox checked = " + userPref.getInt(
+                "pending booking",
+                4
+            ) + "==" + userPref.getInt(
+                "accepted booking",
+                4
+            ) + "==" + userPref.getInt(
+                "driver cancel",
+                4
+            ) + "==" + userPref.getInt("completed booking", 4)
+        )
         if (userPref.getInt("pending booking", 4) == 0)
             chk_pen_book.isChecked = true
         if (userPref.getInt("accepted booking", 4) == 1)
@@ -372,7 +410,14 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
         if (userPref.getInt("completed booking", 4) == 3)
             chk_com_book.isChecked = true
 
-        if (userPref.getInt("pending booking", 4) == 0 && userPref.getInt("accepted booking", 4) == 1 && userPref.getInt("driver cancel", 4) == 2 && userPref.getInt("completed booking", 4) == 3) {
+        if (userPref.getInt("pending booking", 4) == 0 && userPref.getInt(
+                "accepted booking",
+                4
+            ) == 1 && userPref.getInt(
+                "driver cancel",
+                4
+            ) == 2 && userPref.getInt("completed booking", 4) == 3
+        ) {
             chk_all.isChecked = true
         }
 
@@ -442,45 +487,130 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
             clickfilter.putBoolean("setFilter", setFilter)
             clickfilter.commit()
 
-            if (userPref.getInt("pending booking", 4) == 0 && userPref.getInt("accepted booking", 4) == 1 && userPref.getInt("driver cancel", 4) == 2 && userPref.getInt("completed booking", 4) == 3) {
+            if (userPref.getInt("pending booking", 4) == 0 && userPref.getInt(
+                    "accepted booking",
+                    4
+                ) == 1 && userPref.getInt(
+                    "driver cancel",
+                    4
+                ) == 2 && userPref.getInt("completed booking", 4) == 3
+            ) {
                 FilterString = ""
             }
 
             loader.show()
-            FilterAllDriverTrips(0, "filter", true)
+            filterAllDriverTrips(0, "filter", true)
 
             FilterString = ""
         }
     }
 
     override fun AcceptCabBookin(position: Int) {
-        if (DriverAllTripArray!!.size > 0) {
+        if (driverAllTripArray!!.size > 0) {
             loader.show()
-            val driverAllTripFeed = DriverAllTripArray!![position]
-            val DrvBookingUrl = Url.DriverAcceptTripUrl + "?booking_id=" + driverAllTripFeed.id + "&driver_id=" + userPref.getString("id", "")
+            val driverAllTripFeed = driverAllTripArray!![position]
+            val DrvBookingUrl =
+                Url.DriverAcceptTripUrl + "?booking_id=" + driverAllTripFeed.id + "&driver_id=" + userPref.getString(
+                    "id",
+                    ""
+                )
             Log.d("DrvBookingUrl", "DrvBookingUrl =$DrvBookingUrl")
             Ion.with(this@DriverTripActivity)
-                    .load(DrvBookingUrl)
+                .load(DrvBookingUrl)
+                .asJsonObject()
+                .setCallback { error, result ->
+                    // do stuff with the result or error
+                    Log.d("trips accept result", "load_trips result = $result==$error")
+                    loader.cancel()
+                    if (error == null) {
+                        try {
+                            val resObj = JSONObject(result.toString())
+
+                            if (resObj.getString("status") == "success") {
+
+                                val booking_status = userPref.edit()
+                                booking_status.putString("booking_status", "Accepted")
+                                booking_status.commit()
+
+                                driverAllTripFeed.driverFlag = "1"
+                                driverAllTripFeed.status = "3"
+                                drvAllTripAdapter.notifyItemChanged(position)
+                            } else if (resObj.getString("status") == "false") {
+                                Common.showMkError(
+                                    this@DriverTripActivity,
+                                    resObj.getString("error code").toString()
+                                )
+
+                                if (resObj.has("Isactive") && resObj.getString("Isactive") == "Inactive") {
+
+                                    val editor = userPref.edit()
+                                    editor.clear()
+                                    editor.commit()
+
+                                    Handler().postDelayed({
+                                        val intent = Intent(
+                                            this@DriverTripActivity,
+                                            MainActivity::class.java
+                                        )
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                                        startActivity(intent)
+                                        finish()
+                                    }, 2500)
+                                }
+                            }
+                        } catch (e: JSONException) {
+                            e.printStackTrace()
+                        }
+
+                    } else {
+                        Common.showHttpErrorMessage(this@DriverTripActivity, error.message)
+                    }
+                }
+
+        }
+    }
+
+    override fun RejectCabBookin(position: Int, timerStart: String) {
+        if (driverAllTripArray!!.size > 0) {
+            loader.show()
+            Log.d("position", "position = $position")
+            val driverAllTripFeed = driverAllTripArray!![position]
+            val DrvRejectUrl =
+                Url.DriverRejectTripUrl + "?booking_id=" + driverAllTripFeed.id + "&driver_id=" + userPref.getString(
+                    "id",
+                    ""
+                )
+            Log.d("DrvRejectUrl", "DrvRejectUrl = $DrvRejectUrl")
+            if (timerStart == "timer reject") {
+                Ion.with(this@DriverTripActivity)
+                    .load(DrvRejectUrl)
                     .asJsonObject()
                     .setCallback { error, result ->
                         // do stuff with the result or error
-                        Log.d("trips accept result", "load_trips result = $result==$error")
+                        Log.d("trips rejeect result", "load_trips result = $result==$error")
                         loader.cancel()
+
+
                         if (error == null) {
+
                             try {
                                 val resObj = JSONObject(result.toString())
 
                                 if (resObj.getString("status") == "success") {
 
                                     val booking_status = userPref.edit()
-                                    booking_status.putString("booking_status", "Accepted")
+                                    booking_status.putString("booking_status", "Rejected")
                                     booking_status.commit()
 
-                                    driverAllTripFeed.driverFlag = "1"
-                                    driverAllTripFeed.status = "3"
-                                    DrvAllTripAdapter.notifyItemChanged(position)
+                                    driverAllTripFeed.driverFlag = "2"
+                                    driverAllTripFeed.status = "5"
+                                    drvAllTripAdapter.updateItems()
                                 } else if (resObj.getString("status") == "false") {
-                                    Common.showMkError(this@DriverTripActivity, resObj.getString("error code").toString())
+                                    Common.showMkError(
+                                        this@DriverTripActivity,
+                                        resObj.getString("error code").toString()
+                                    )
 
                                     if (resObj.has("Isactive") && resObj.getString("Isactive") == "Inactive") {
 
@@ -489,7 +619,10 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
                                         editor.commit()
 
                                         Handler().postDelayed({
-                                            val intent = Intent(this@DriverTripActivity, MainActivity::class.java)
+                                            val intent = Intent(
+                                                this@DriverTripActivity,
+                                                MainActivity::class.java
+                                            )
                                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
                                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                                             startActivity(intent)
@@ -505,83 +638,22 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
                             Common.showHttpErrorMessage(this@DriverTripActivity, error.message)
                         }
                     }
-
-        }
-    }
-
-    override fun RejectCabBookin(position: Int, timerStart: String) {
-        if (DriverAllTripArray!!.size > 0) {
-            loader.show()
-            Log.d("position", "position = $position")
-            val driverAllTripFeed = DriverAllTripArray!![position]
-            val DrvRejectUrl = Url.DriverRejectTripUrl + "?booking_id=" + driverAllTripFeed.id + "&driver_id=" + userPref.getString("id", "")
-            Log.d("DrvRejectUrl", "DrvRejectUrl = $DrvRejectUrl")
-            if (timerStart == "timer reject") {
-                Ion.with(this@DriverTripActivity)
-                        .load(DrvRejectUrl)
-                        .asJsonObject()
-                        .setCallback { error, result ->
-                            // do stuff with the result or error
-                            Log.d("trips rejeect result", "load_trips result = $result==$error")
-                            loader.cancel()
-
-
-                            if (error == null) {
-
-                                try {
-                                    val resObj = JSONObject(result.toString())
-
-                                    if (resObj.getString("status") == "success") {
-
-                                        val booking_status = userPref.edit()
-                                        booking_status.putString("booking_status", "Rejected")
-                                        booking_status.commit()
-
-                                        driverAllTripFeed.driverFlag = "2"
-                                        driverAllTripFeed.status = "5"
-                                        DrvAllTripAdapter.updateItems()
-                                    } else if (resObj.getString("status") == "false") {
-                                        Common.showMkError(this@DriverTripActivity, resObj.getString("error code").toString())
-
-                                        if (resObj.has("Isactive") && resObj.getString("Isactive") == "Inactive") {
-
-                                            val editor = userPref.edit()
-                                            editor.clear()
-                                            editor.commit()
-
-                                            Handler().postDelayed({
-                                                val intent = Intent(this@DriverTripActivity, MainActivity::class.java)
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                                                startActivity(intent)
-                                                finish()
-                                            }, 2500)
-                                        }
-                                    }
-                                } catch (e: JSONException) {
-                                    e.printStackTrace()
-                                }
-
-                            } else {
-                                Common.showHttpErrorMessage(this@DriverTripActivity, error.message)
-                            }
-                        }
             } else {
                 Ion.with(this@DriverTripActivity)
-                        .load(DrvRejectUrl)
-                        .asJsonObject()
-                        .setCallback { error, result ->
-                            // do stuff with the result or error
-                            Log.d("trips reject result", "load_trips result = $result==$error")
-                            loader.cancel()
-                            if (error == null) {
-                                driverAllTripFeed.driverFlag = "2"
-                                driverAllTripFeed.status = "5"
-                                DrvAllTripAdapter.updateItems()
-                            } else {
-                                Common.showHttpErrorMessage(this@DriverTripActivity, error.message)
-                            }
+                    .load(DrvRejectUrl)
+                    .asJsonObject()
+                    .setCallback { error, result ->
+                        // do stuff with the result or error
+                        Log.d("trips reject result", "load_trips result = $result==$error")
+                        loader.cancel()
+                        if (error == null) {
+                            driverAllTripFeed.driverFlag = "2"
+                            driverAllTripFeed.status = "5"
+                            drvAllTripAdapter.updateItems()
+                        } else {
+                            Common.showHttpErrorMessage(this@DriverTripActivity, error.message)
                         }
+                    }
             }
         }
     }
@@ -612,10 +684,17 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
             clickfilter.putBoolean("setFilter", allFilter)
             clickfilter.commit()
 
-            if (userPref.getInt("pending booking", 4) == 0 && userPref.getInt("accepted booking", 4) == 1 && userPref.getInt("driver cancel", 4) == 2 && userPref.getInt("completed booking", 4) == 3) {
+            if (userPref.getInt("pending booking", 4) == 0 && userPref.getInt(
+                    "accepted booking",
+                    4
+                ) == 1 && userPref.getInt(
+                    "driver cancel",
+                    4
+                ) == 2 && userPref.getInt("completed booking", 4) == 3
+            ) {
                 FilterString = ""
             }
-            FilterAllDriverTrips(position + 1, "", true)
+            filterAllDriverTrips(position + 1, "", true)
             FilterString = ""
         } else {
             getDriverAllTrip(position + 1, true)
@@ -623,8 +702,8 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
     }
 
     override fun GoTripDetail(position: Int) {
-        if (DriverAllTripArray!!.size > 0) {
-            Common.driverAllTripFeed = DriverAllTripArray!![position]
+        if (driverAllTripArray!!.size > 0) {
+            Common.driverAllTripFeed = driverAllTripArray!![position]
             val di = Intent(this@DriverTripActivity, DriverTripDetailActivity::class.java)
             //startActivity(di);
             di.putExtra("position", position)
@@ -633,7 +712,7 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
 
     }
 
-    fun CheckBoxChecked(relativeLayout: RelativeLayout, checkBox: CheckBox, checkBoxValue: String) {
+    fun checkBoxChecked(relativeLayout: RelativeLayout, checkBox: CheckBox, checkBoxValue: String) {
 
         checkBox.setOnClickListener {
             Log.d("checkAllClick", "checkAllClick = $checkAllClick==$checkAllClick")
@@ -666,10 +745,7 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
         }
 
         relativeLayout.setOnClickListener {
-            if (checkBox.isChecked)
-                checkBox.isChecked = false
-            else
-                checkBox.isChecked = true
+            checkBox.isChecked = !checkBox.isChecked
             Log.d("checkAllClick", "checkAllClick = $checkAllClick==$checkAllClick")
             if (checkBoxValue == "all") {
                 if (checkAllClick) {
@@ -699,205 +775,237 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
         }
     }
 
-    fun FilterAllDriverTrips(offset: Int, filter: String, is_pull: Boolean) {
+    fun filterAllDriverTrips(offset: Int, filter: String, is_pull: Boolean) {
         if (offset == 0)
-            DriverAllTripArray = ArrayList()
+            driverAllTripArray = ArrayList()
 
-        val DriverFilterTripUrl = Url.DriverFilterTripUrl + "?filter=" + FilterString + "&off=" + offset + "&driver_id=" + userPref.getString("id", "bgfv")
+        val DriverFilterTripUrl =
+            Url.DriverFilterTripUrl + "?filter=" + FilterString + "&off=" + offset + "&driver_id=" + userPref.getString(
+                "id",
+                "bgfv"
+            )
         Log.d("DriverFilterTripUrl", "DriverFilterTripUrl = $DriverFilterTripUrl")
         Ion.with(this@DriverTripActivity)
-                .load(DriverFilterTripUrl)
-                .asJsonObject()
-                .setCallback { error, result ->
-                    // do stuff with the result or error
-                    Log.d("trips filter result", "load_trips result = $result==$error")
-                    loader.cancel()
-                    recycle_all_trip.isClickable = true
-                    recycle_all_trip.isEnabled = true
-                    if (error == null) {
+            .load(DriverFilterTripUrl)
+            .asJsonObject()
+            .setCallback { error, result ->
+                // do stuff with the result or error
+                Log.d("trips filter result", "load_trips result = $result==$error")
+                loader.cancel()
+                recycle_all_trip.isClickable = true
+                recycle_all_trip.isEnabled = true
+                if (error == null) {
 
-                        try {
-                            val resObj = JSONObject(result.toString())
-                            Log.d("loadTripsUrl", "loadTripsUrl two= $resObj")
-                            if (resObj.getString("status") == "success") {
+                    try {
+                        val resObj = JSONObject(result.toString())
+                        Log.d("loadTripsUrl", "loadTripsUrl two= $resObj")
+                        if (resObj.getString("status") == "success") {
 
-                                val tripArray = JSONArray(resObj.getString("all_trip"))
-                                for (t in 0 until tripArray.length()) {
-                                    val trpObj = tripArray.getJSONObject(t)
-                                    val allTripFeed = DriverAllTripFeed()
-                                    allTripFeed.id = trpObj.getString("id")
-                                    allTripFeed.driverFlag = trpObj.getString("driver_flag")
-                                    allTripFeed.dropArea = trpObj.getString("drop_area")
-                                    allTripFeed.pickupArea = trpObj.getString("pickup_area")
-                                    allTripFeed.carType = trpObj.getString("car_type")
-                                    allTripFeed.pickupDateTime = trpObj.getString("pickup_date_time")
-                                    allTripFeed.amount = trpObj.getString("amount")
-                                    allTripFeed.carIcon = trpObj.getString("icon")
-                                    allTripFeed.km = trpObj.getString("km")
-                                    allTripFeed.setUserDetail(trpObj.getString("user_detail"))
-                                    allTripFeed.status = trpObj.getString("status")
-                                    allTripFeed.startTime = trpObj.getString("start_time")
-                                    allTripFeed.endTime = trpObj.getString("end_time")
-                                    allTripFeed.serverTime = trpObj.getString("server_time")
-                                    allTripFeed.approxTime = trpObj.getString("approx_time")
-                                    allTripFeed.perMinuteRate = trpObj.getString("per_minute_rate")
-                                    allTripFeed.pickupLat = trpObj.getString("pickup_lat")
-                                    allTripFeed.pickupLongs = trpObj.getString("pickup_longs")
-                                    DriverAllTripArray!!.add(allTripFeed)
-                                }
-                                Log.d("loadTripsUrl", "loadTripsUrl three= " + DriverAllTripArray!!.size)
-                                if (DriverAllTripArray != null && DriverAllTripArray!!.size > 0) {
-                                    if (offset == 0) {
-                                        layout_recycleview.visibility = View.VISIBLE
-                                        layout_no_recourd_found.visibility = View.GONE
-                                        DrvAllTripAdapter = DriverAllTripAdapter(this@DriverTripActivity, DriverAllTripArray!!, false)
-                                        recycle_all_trip.adapter = DrvAllTripAdapter
-                                        DrvAllTripAdapter.setOnAllTripItemClickListener(this@DriverTripActivity)
-                                        swipe_refresh_layout.isRefreshing = false
-                                    }
-                                    DrvAllTripAdapter.updateItems()
-                                    swipe_refresh_layout.isEnabled = true
-                                }
-                            } else if (resObj.getString("status") == "false") {
-
-                                Common.showMkError(this@DriverTripActivity, resObj.getString("error code").toString())
-
-                                if (resObj.has("Isactive") && resObj.getString("Isactive") == "Inactive") {
-
-                                    val editor = userPref.edit()
-                                    editor.clear()
-                                    editor.commit()
-
-                                    Handler().postDelayed({
-                                        val intent = Intent(this@DriverTripActivity, LoginActivity::class.java)
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                                        startActivity(intent)
-                                        finish()
-                                    }, 2500)
-                                }
-                            } else {
-                                if (offset == 0) {
-                                    layout_recycleview.visibility = View.GONE
-                                    layout_no_recourd_found.visibility = View.VISIBLE
-                                } else {
-
-                                    Toast.makeText(this@DriverTripActivity, resources.getString(R.string.data_not_found), Toast.LENGTH_LONG).show()
-                                }
+                            val tripArray = JSONArray(resObj.getString("all_trip"))
+                            for (t in 0 until tripArray.length()) {
+                                val trpObj = tripArray.getJSONObject(t)
+                                val allTripFeed = DriverAllTripFeed()
+                                allTripFeed.id = trpObj.getString("id")
+                                allTripFeed.driverFlag = trpObj.getString("driver_flag")
+                                allTripFeed.dropArea = trpObj.getString("drop_area")
+                                allTripFeed.pickupArea = trpObj.getString("pickup_area")
+                                allTripFeed.carType = trpObj.getString("car_type")
+                                allTripFeed.pickupDateTime = trpObj.getString("pickup_date_time")
+                                allTripFeed.amount = trpObj.getString("amount")
+                                allTripFeed.carIcon = trpObj.getString("icon")
+                                allTripFeed.km = trpObj.getString("km")
+                                allTripFeed.setUserDetail(trpObj.getString("user_detail"))
+                                allTripFeed.status = trpObj.getString("status")
+                                allTripFeed.startTime = trpObj.getString("start_time")
+                                allTripFeed.endTime = trpObj.getString("end_time")
+                                allTripFeed.serverTime = trpObj.getString("server_time")
+                                allTripFeed.approxTime = trpObj.getString("approx_time")
+                                allTripFeed.perMinuteRate = trpObj.getString("per_minute_rate")
+                                allTripFeed.pickupLat = trpObj.getString("pickup_lat")
+                                allTripFeed.pickupLongs = trpObj.getString("pickup_longs")
+                                driverAllTripArray!!.add(allTripFeed)
                             }
-                        } catch (e: JSONException) {
-                            e.printStackTrace()
-                        }
+                            Log.d(
+                                "loadTripsUrl",
+                                "loadTripsUrl three= " + driverAllTripArray!!.size
+                            )
+                            if (driverAllTripArray != null && driverAllTripArray!!.size > 0) {
+                                if (offset == 0) {
+                                    layout_recycleview.visibility = View.VISIBLE
+                                    layout_no_recourd_found.visibility = View.GONE
+                                    drvAllTripAdapter = DriverAllTripAdapter(
+                                        this@DriverTripActivity,
+                                        driverAllTripArray!!,
+                                        false
+                                    )
+                                    recycle_all_trip.adapter = drvAllTripAdapter
+                                    drvAllTripAdapter.setOnAllTripItemClickListener(this@DriverTripActivity)
+                                    swipe_refresh_layout.isRefreshing = false
+                                }
+                                drvAllTripAdapter.updateItems()
+                                swipe_refresh_layout.isEnabled = true
+                            }
+                        } else if (resObj.getString("status") == "false") {
 
-                    } else {
-                        Common.showHttpErrorMessage(this@DriverTripActivity, error.message)
+                            Common.showMkError(
+                                this@DriverTripActivity,
+                                resObj.getString("error code").toString()
+                            )
+
+                            if (resObj.has("Isactive") && resObj.getString("Isactive") == "Inactive") {
+
+                                val editor = userPref.edit()
+                                editor.clear()
+                                editor.commit()
+
+                                Handler().postDelayed({
+                                    val intent =
+                                        Intent(this@DriverTripActivity, LoginActivity::class.java)
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                                    startActivity(intent)
+                                    finish()
+                                }, 2500)
+                            }
+                        } else {
+                            if (offset == 0) {
+                                layout_recycleview.visibility = View.GONE
+                                layout_no_recourd_found.visibility = View.VISIBLE
+                            } else {
+
+                                Toast.makeText(
+                                    this@DriverTripActivity,
+                                    resources.getString(R.string.data_not_found),
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                        }
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
                     }
+
+                } else {
+                    Common.showHttpErrorMessage(this@DriverTripActivity, error.message)
                 }
+            }
     }
 
     fun getDriverAllTrip(offset: Int, is_pull: Boolean) {
 
         if (offset == 0) {
-            DriverAllTripArray = ArrayList()
+            driverAllTripArray = ArrayList()
         }
         //String DrvBookingUrl = Url.DriverTripUrl+"?driver_id="+Utility.userDetails.getId()+"&off="+offset;
-        val DrvBookingUrl = Url.DriverTripUrl + "?driver_id=" + userPref.getString("id", "") + "&off=" + offset
-        Log.d("loadTripsUrl", "loadTripsUrl =$DrvBookingUrl==$offset")
+        val DrvBookingUrl =
+            Url.DriverTripUrl + "?driver_id=" + userPref.getString("id", "") + "&off=" + offset
+        Log.d("loadTripsUrl", "loadTripsUrl =$DrvBookingUrl")
         Ion.with(this@DriverTripActivity)
-                .load(DrvBookingUrl)
-                .asJsonObject()
-                .setCallback { error, result ->
-                    // do stuff with the result or error
-                    Log.d("trips driver result", "load_trips result = $result==$error")
-                    loader.cancel()
-                    recycle_all_trip.isClickable = true
-                    recycle_all_trip.isEnabled = true
-                    if (error == null) {
+            .load(DrvBookingUrl)
+            .asJsonObject()
+            .setCallback { error, result ->
+                // do stuff with the result or error
+                Log.d("trips driver result", "load_trips result = $result==$error")
+                loader.cancel()
+                recycle_all_trip.isClickable = true
+                recycle_all_trip.isEnabled = true
+                if (error == null) {
 
-                        try {
-                            val resObj = JSONObject(result.toString())
-                            Log.d("loadTripsUrl", "loadTripsUrl two= $resObj")
-                            if (resObj.getString("status") == "success") {
+                    try {
+                        val resObj = JSONObject(result.toString())
+                        Log.d("loadTripsUrl", "loadTripsUrl two= $resObj")
+                        if (resObj.getString("status") == "success") {
 
-                                val tripArray = JSONArray(resObj.getString("all_trip"))
-                                for (t in 0 until tripArray.length()) {
-                                    val trpObj = tripArray.getJSONObject(t)
-                                    val allTripFeed = DriverAllTripFeed()
-                                    allTripFeed.id = trpObj.getString("id")
-                                    allTripFeed.driverFlag = trpObj.getString("driver_flag")
-                                    allTripFeed.dropArea = trpObj.getString("drop_area")
-                                    allTripFeed.pickupArea = trpObj.getString("pickup_area")
-                                    allTripFeed.carType = trpObj.getString("car_type")
-                                    allTripFeed.pickupDateTime = trpObj.getString("pickup_date_time")
-                                    allTripFeed.amount = trpObj.getString("amount")
-                                    allTripFeed.carIcon = trpObj.getString("icon")
-                                    allTripFeed.km = trpObj.getString("km")
-                                    allTripFeed.setUserDetail(trpObj.getString("user_detail"))
-                                    allTripFeed.status = trpObj.getString("status")
-                                    allTripFeed.startTime = trpObj.getString("start_time")
-                                    allTripFeed.endTime = trpObj.getString("end_time")
-                                    allTripFeed.serverTime = trpObj.getString("server_time")
-                                    allTripFeed.approxTime = trpObj.getString("approx_time")
-                                    allTripFeed.perMinuteRate = trpObj.getString("per_minute_rate")
-                                    allTripFeed.pickupLat = trpObj.getString("pickup_lat")
-                                    allTripFeed.pickupLongs = trpObj.getString("pickup_longs")
-                                    DriverAllTripArray!!.add(allTripFeed)
-                                }
-                                Log.d("loadTripsUrl", "loadTripsUrl three= " + DriverAllTripArray!!.size)
-                                if (DriverAllTripArray != null && DriverAllTripArray!!.size > 0) {
-                                    if (offset == 0) {
-                                        layout_recycleview.visibility = View.VISIBLE
-                                        layout_no_recourd_found.visibility = View.GONE
-                                        Log.e("DriverAllTripArray",savedInstState.toString());
-                                        DrvAllTripAdapter = DriverAllTripAdapter(this, DriverAllTripArray!!, is_pull)
-                                        recycle_all_trip.adapter = DrvAllTripAdapter
-                                        DrvAllTripAdapter.setOnAllTripItemClickListener(this@DriverTripActivity)
-                                        DrvAllTripAdapter.updateItems()
-                                        swipe_refresh_layout.isRefreshing = false
-                                    } else {
-                                        DrvAllTripAdapter.updateItems()
-                                        swipe_refresh_layout.isRefreshing = false
-                                    }
-                                    swipe_refresh_layout.isEnabled = true
-                                }
-                            } else if (resObj.getString("status") == "false") {
-
-                                Common.showMkError(this@DriverTripActivity, resObj.getString("error code").toString())
-
-                                if (resObj.has("Isactive") && resObj.getString("Isactive") == "Inactive")
-                                {
-                                    val editor = userPref.edit()
-                                    editor.clear()
-                                    editor.commit()
-                                    Handler().postDelayed({
-                                        val intent = Intent(this@DriverTripActivity, MainActivity::class.java)
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                                        startActivity(intent)
-                                        finish()
-                                    }, 2500)
-                                }
-                            } else {
-                                if (offset == 0) {
-                                    layout_recycleview.visibility = View.GONE
-                                    layout_no_recourd_found.visibility = View.VISIBLE
-                                } else {
-                                    //Toast.makeText(DriverTripActivity.this, resObj.getString("message").toString(), Toast.LENGTH_LONG).show();
-                                    Toast.makeText(this@DriverTripActivity, resources.getString(R.string.data_not_found), Toast.LENGTH_LONG).show()
-                                }
+                            val tripArray = JSONArray(resObj.getString("all_trip"))
+                            for (t in 0 until tripArray.length()) {
+                                val trpObj = tripArray.getJSONObject(t)
+                                val allTripFeed = DriverAllTripFeed()
+                                allTripFeed.id = trpObj.getString("id")
+                                allTripFeed.driverFlag = trpObj.getString("driver_flag")
+                                allTripFeed.dropArea = trpObj.getString("drop_area")
+                                allTripFeed.pickupArea = trpObj.getString("pickup_area")
+                                allTripFeed.carType = trpObj.getString("car_type")
+                                allTripFeed.pickupDateTime = trpObj.getString("pickup_date_time")
+                                allTripFeed.amount = trpObj.getString("amount")
+                                allTripFeed.carIcon = trpObj.getString("icon")
+                                allTripFeed.km = trpObj.getString("km")
+                                allTripFeed.setUserDetail(trpObj.getString("user_detail"))
+                                allTripFeed.status = trpObj.getString("status")
+                                allTripFeed.startTime = trpObj.getString("start_time")
+                                allTripFeed.endTime = trpObj.getString("end_time")
+                                allTripFeed.serverTime = trpObj.getString("server_time")
+                                allTripFeed.approxTime = trpObj.getString("approx_time")
+                                allTripFeed.perMinuteRate = trpObj.getString("per_minute_rate")
+                                allTripFeed.pickupLat = trpObj.getString("pickup_lat")
+                                allTripFeed.pickupLongs = trpObj.getString("pickup_longs")
+                                driverAllTripArray!!.add(allTripFeed)
                             }
-                        } catch (e: JSONException) {
-                            e.printStackTrace()
-                        }
+                            Log.d(
+                                "loadTripsUrl",
+                                "loadTripsUrl three= " + driverAllTripArray!!.size
+                            )
+                            if (driverAllTripArray != null && driverAllTripArray!!.size > 0) {
+                                if (offset == 0) {
+                                    layout_recycleview.visibility = View.VISIBLE
+                                    layout_no_recourd_found.visibility = View.GONE
+                                    Log.e("DriverAllTripArray", savedInstState.toString())
+                                    drvAllTripAdapter =
+                                        DriverAllTripAdapter(this, driverAllTripArray!!, is_pull)
+                                    recycle_all_trip.adapter = drvAllTripAdapter
+                                    drvAllTripAdapter.setOnAllTripItemClickListener(this@DriverTripActivity)
+                                    drvAllTripAdapter.updateItems()
+                                    swipe_refresh_layout.isRefreshing = false
+                                } else {
+                                    drvAllTripAdapter.updateItems()
+                                    swipe_refresh_layout.isRefreshing = false
+                                }
+                                swipe_refresh_layout.isEnabled = true
+                            }
+                        } else if (resObj.getString("status") == "false") {
 
-                    } else {
-                        Common.showHttpErrorMessage(this@DriverTripActivity, error.message)
+                            Common.showMkError(
+                                this@DriverTripActivity,
+                                resObj.getString("error code").toString()
+                            )
+
+                            if (resObj.has("Isactive") && resObj.getString("Isactive") == "Inactive") {
+                                val editor = userPref.edit()
+                                editor.clear()
+                                editor.commit()
+                                Handler().postDelayed({
+                                    val intent =
+                                        Intent(this@DriverTripActivity, MainActivity::class.java)
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                                    startActivity(intent)
+                                    finish()
+                                }, 2500)
+                            }
+                        } else {
+                            if (offset == 0) {
+                                layout_recycleview.visibility = View.GONE
+                                layout_no_recourd_found.visibility = View.VISIBLE
+                            } else {
+                                //Toast.makeText(DriverTripActivity.this, resObj.getString("message").toString(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(
+                                    this@DriverTripActivity,
+                                    resources.getString(R.string.data_not_found),
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                        }
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
                     }
+
+                } else {
+                    Common.showHttpErrorMessage(this@DriverTripActivity, error.message)
                 }
+            }
 
     }
 
-    inner class CallUnsubscribe(internal var activity: Activity, internal var DeviceToken: String) : AsyncTask<String, Void, String>() {
+    inner class CallUnsubscribe(internal var activity: Activity, internal var DeviceToken: String) :
+        AsyncTask<String, Void, String>() {
 
 
         private val userPref: SharedPreferences
@@ -977,7 +1085,8 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
         }
     }
 
-    inner class CallSubscribe(internal var activity: Activity, internal var DeviceToken: String) : AsyncTask<String, Void, String>() {
+    inner class CallSubscribe(internal var activity: Activity, internal var DeviceToken: String) :
+        AsyncTask<String, Void, String>() {
 
 
         private val userPref: SharedPreferences
@@ -1078,10 +1187,20 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
                             clickfilter.putBoolean("setFilter", allFilter)
                             clickfilter.commit()
 
-                            if (userPref.getInt("pending booking", 4) == 0 && userPref.getInt("accepted booking", 4) == 1 && userPref.getInt("driver cancel", 4) == 2 && userPref.getInt("completed booking", 4) == 3) {
+                            if (userPref.getInt(
+                                    "pending booking",
+                                    4
+                                ) == 0 && userPref.getInt(
+                                    "accepted booking",
+                                    4
+                                ) == 1 && userPref.getInt(
+                                    "driver cancel",
+                                    4
+                                ) == 2 && userPref.getInt("completed booking", 4) == 3
+                            ) {
                                 FilterString = ""
                             }
-                            FilterAllDriverTrips(0, "filter", false)
+                            filterAllDriverTrips(0, "filter", false)
                             FilterString = ""
 
                         } else {
@@ -1097,14 +1216,15 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         Log.d("DETAIL_REQUEST", "DriverTrip DETAIL_REQUEST = $DETAIL_REQUEST==$requestCode==$data")
         if (requestCode == DETAIL_REQUEST) {
             if (data != null) {
                 val position = data.getIntExtra("position", 0)
-                val driverAllTripFeed = DriverAllTripArray!![position]
+                val driverAllTripFeed = driverAllTripArray!![position]
                 driverAllTripFeed.driverFlag = data.getStringExtra("driver_flage")
                 driverAllTripFeed.status = data.getStringExtra("status")
-                DrvAllTripAdapter.notifyItemChanged(position)
+                drvAllTripAdapter.notifyItemChanged(position)
             }
         }
     }
@@ -1113,10 +1233,14 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
         super.onResume()
 
         if (Common.profile_edit == 1) {
-            Common.showMkSuccess(this@DriverTripActivity, resources.getString(R.string.update_profile), "yes")
+            Common.showMkSuccess(
+                this@DriverTripActivity,
+                resources.getString(R.string.update_profile),
+                "yes"
+            )
             Common.profile_edit = 0
         }
-        if (Common.BookingId != null && Common.BookingId != "") {
+        if (Common.BookingId != "") {
 
             if (Common.isNetworkAvailable(this@DriverTripActivity)) {
                 Common.BookingId = ""
@@ -1147,10 +1271,20 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
                     clickfilter.putBoolean("setFilter", allFilter)
                     clickfilter.commit()
 
-                    if (userPref.getInt("pending booking", 4) == 0 && userPref.getInt("accepted booking", 4) == 1 && userPref.getInt("driver cancel", 4) == 2 && userPref.getInt("completed booking", 4) == 3) {
+                    if (userPref.getInt(
+                            "pending booking",
+                            4
+                        ) == 0 && userPref.getInt(
+                            "accepted booking",
+                            4
+                        ) == 1 && userPref.getInt(
+                            "driver cancel",
+                            4
+                        ) == 2 && userPref.getInt("completed booking", 4) == 3
+                    ) {
                         FilterString = ""
                     }
-                    Handler().postDelayed({ FilterAllDriverTrips(0, "", true) }, 1000)
+                    Handler().postDelayed({ filterAllDriverTrips(0, "", true) }, 1000)
 
                     FilterString = ""
 

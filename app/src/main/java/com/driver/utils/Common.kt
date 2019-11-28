@@ -1,5 +1,6 @@
 package com.driver.utils
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
@@ -157,7 +158,7 @@ class Common {
         }
     }
 
-    fun changeLocationSocket(activity: Activity, driver_available: Switch) {
+    fun changeLocationSocket(activity: Activity, driver_available: Switch?) {
         val locationListener: LocationListener
         val locationManager: LocationManager =
             activity.getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -166,7 +167,7 @@ class Common {
         locationListener = object : LocationListener {
             override fun onLocationChanged(location: Location) {
 
-                if (driver_available.isChecked) {
+                if (driver_available?.isChecked!=null) {
                     val userPref = PreferenceManager.getDefaultSharedPreferences(activity)
 
                     try {
@@ -221,18 +222,47 @@ class Common {
             )
         }
         if (isPermission) {
-            locationManager.requestLocationUpdates(
-                LocationManager.GPS_PROVIDER,
-                1000,
-                1f,
-                locationListener
-            )
-            locationManager.requestLocationUpdates(
-                LocationManager.NETWORK_PROVIDER,
-                1000,
-                1f,
-                locationListener
-            )
+            activity.runOnUiThread(object :Runnable
+            {
+                override fun run() {
+                    if (ActivityCompat.checkSelfPermission(
+                            activity,
+                            Manifest.permission.ACCESS_FINE_LOCATION
+                        ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                            activity,
+                            Manifest.permission.ACCESS_COARSE_LOCATION
+                        ) != PackageManager.PERMISSION_GRANTED
+                    ) {
+
+                        return
+                    }
+                    locationManager.requestLocationUpdates(
+                        LocationManager.GPS_PROVIDER,
+                        1000,
+                        1f,
+                        locationListener
+                    )
+                    if (ActivityCompat.checkSelfPermission(
+                            activity,
+                            Manifest.permission.ACCESS_FINE_LOCATION
+                        ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                            activity,
+                            Manifest.permission.ACCESS_COARSE_LOCATION
+                        ) != PackageManager.PERMISSION_GRANTED
+                    ) {
+
+                        return
+                    }
+                    locationManager.requestLocationUpdates(
+                        LocationManager.NETWORK_PROVIDER,
+                        1000,
+                        1f,
+                        locationListener
+                    )
+                }
+
+            })
+
         }
     }
 
@@ -438,7 +468,7 @@ class Common {
         fun socketFunction(
             activity: Activity,
             mSocket: Socket,
-            driver_status: Switch,
+            driver_status: Switch?,
             latitude: Double,
             longitude: Double,
             common: Common,
@@ -479,8 +509,6 @@ class Common {
                 }
                 searchedDriverDetail(activity)
             }
-
-
         }
 
         private fun searchedDriverDetail(activity: Activity) {

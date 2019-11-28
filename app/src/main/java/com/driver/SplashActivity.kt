@@ -2,13 +2,19 @@ package com.driver
 
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Handler
 import android.preference.PreferenceManager
 import android.os.Bundle
+import android.telephony.SmsManager
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import com.driver.utils.SimUtils
 
 import com.koushikdutta.async.future.FutureCallback
 import com.koushikdutta.ion.Ion
@@ -23,6 +29,7 @@ class SplashActivity : AppCompatActivity() {
     lateinit var userPref: SharedPreferences
     lateinit var txt_progress: TextView
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
@@ -39,6 +46,11 @@ class SplashActivity : AppCompatActivity() {
 
         Handler().postDelayed({
             if (Utility.isNetworkAvailable(this@SplashActivity)) {
+//                sendSmsMsgFnc("8447992236","dffdsfsd")
+//                SimUtils.sendSMS(this,1,"8447992236",null,"Hi Stackoverflow! its me Maher. Sent by sim1",null,null);
+//                    SimUtils.sendDirectSMS(this)
+//                SmsManager.getSmsManagerForSubscriptionId(4).sendTextMessage( "8595008237", "", "String text",null, null);
+//                SimUtils.sendDualSimSMSOption("8447992236","test",this)
                 getCarType()
             } else {
                 //Network
@@ -146,5 +158,28 @@ class SplashActivity : AppCompatActivity() {
                 })
     }
 
-
+    fun sendSmsMsgFnc(mblNumVar:String, smsMsgVar:String) {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.SEND_SMS) === PackageManager.PERMISSION_GRANTED)
+        {
+            try
+            {
+                val smsMgrVar = SmsManager.getDefault()
+                smsMgrVar.sendTextMessage(mblNumVar, null, smsMsgVar, null, null)
+                Toast.makeText(getApplicationContext(), "Message Sent",
+                    Toast.LENGTH_LONG).show()
+            }
+            catch (ErrVar:Exception) {
+                Toast.makeText(getApplicationContext(), ErrVar.message.toString(),
+                    Toast.LENGTH_LONG).show()
+                ErrVar.printStackTrace()
+            }
+        }
+        else
+        {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            {
+                requestPermissions(arrayOf<String>(android.Manifest.permission.SEND_SMS), 10)
+            }
+        }
+    }
 }

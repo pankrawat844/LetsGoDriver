@@ -74,18 +74,18 @@ class CabPopupActivity : AppCompatActivity(), OnMapReadyCallback {
             e.printStackTrace()
         }
 
-        customMap = findViewById(R.id.mapview) as CustomMap
+        customMap = findViewById(R.id.mapview)
         MapsInitializer.initialize(this@CabPopupActivity)
         customMap.onCreate(savedInstanceState)
 
         customMap.getMapAsync(this@CabPopupActivity)
 
-        minutes_value = findViewById(R.id.minutes_value) as TextView
-        txt_address_val = findViewById(R.id.txt_address_val) as TextView
-        timmer_progress = findViewById(R.id.timmer_progress) as DonutProgress
-        txt_accept = findViewById(R.id.txt_accept) as TextView
+        minutes_value = findViewById(R.id.minutes_value)
+        txt_address_val = findViewById(R.id.txt_address_val)
+        timmer_progress = findViewById(R.id.timmer_progress)
+        txt_accept = findViewById(R.id.txt_accept)
         txt_accept.typeface = Roboto_Bold
-        txt_decline = findViewById(R.id.txt_decline) as TextView
+        txt_decline = findViewById(R.id.txt_decline)
         txt_decline.typeface = Roboto_Bold
 
         val layout_main = findViewById(R.id.layout_main) as RelativeLayout
@@ -111,9 +111,7 @@ class CabPopupActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     fun AcceptBooking() {
-
         loader.show()
-
         val DrvBookingUrl = Url.DriverAcceptTripUrl + "?booking_id=" + Common.BookingId + "&driver_id=" + userPref.getString("id", "")
         Log.d("DrvBookingUrl", "DrvBookingUrl =$DrvBookingUrl")
         Ion.with(this@CabPopupActivity)
