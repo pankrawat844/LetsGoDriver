@@ -20,6 +20,7 @@ object Url {
     var DriverOnTripUrl = baseUrl + "driver_on_trip"
     var DriverCompletedTripUrl = baseUrl + "driver_completed_trip"
     var DriverChangPasswordUrl = baseUrl + "driver_change_password"
+    var DriverLatLongSave = "https://lezcocabs.klifftechnologies.com/api/driver/insert.php"
 
     var driver_cartype = baseUrl + "car_type"
     var imageurl = "http://138.68.5.43/driverimages/"

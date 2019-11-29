@@ -1,5 +1,6 @@
 package com.driver
 
+import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
@@ -13,6 +14,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.driver.model.DriverLatLon
+import com.driver.model.DriverRawLatLon
 import com.driver.utils.Common
 import com.driver.utils.DriverAllTripFeed
 import com.github.nkzawa.emitter.Emitter
@@ -26,14 +29,20 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.gson.JsonObject
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu
 import com.koushikdutta.ion.Ion
 import kotlinx.android.synthetic.main.activity_home.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.net.URISyntaxException
 import java.util.*
+import kotlin.collections.HashMap
 
 class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
     var googleMap: GoogleMap? = null
@@ -82,28 +91,30 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
         timer.scheduleAtFixedRate(object :TimerTask(){
             override fun run() {
                 if (gps.canGetLocation()) {
-                    try {
-                        mSocket = IO.socket(SERVER_IP)
-                        mSocket!!.emit(
-                            Socket.EVENT_CONNECT_ERROR,
-                            onConnectError
-                        )
-                        mSocket!!.connect()
-                        Common.socket = mSocket
-                    } catch (e: URISyntaxException) {
-                        e.printStackTrace()
-                        Log.d("connected ", "connected error = " + e.message)
-                    }
-                    val driver_status=Switch(this@HomeActivity)
-                    Common.socketFunction(
-                        this@HomeActivity,
-                        mSocket!!,
-                        null,
-                        latitude,
-                        longitude,
-                        common,
-                        userPref
-                    )
+//                    try {
+//                        mSocket = IO.socket(SERVER_IP)
+//                        mSocket!!.emit(
+//                            Socket.EVENT_CONNECT_ERROR,
+//                            onConnectError
+//                        )
+//                        mSocket!!.connect()
+//                        Common.socket = mSocket
+//                    } catch (e: URISyntaxException) {
+//                        e.printStackTrace()
+//                        Log.d("connected ", "connected error = " + e.message)
+//                    }
+//                    val driver_status=Switch(this@HomeActivity)
+//                    driver_status.isChecked=false
+//                    Common.socketFunction(
+//                        this@HomeActivity,
+//                        mSocket!!,
+//                        driver_status,
+//                        latitude,
+//                        longitude,
+//                        common,
+//                        userPref
+//                    )
+                    saveLocation(latitude,longitude)
                 }
             }
 
@@ -336,7 +347,43 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
 
     }
 
+    fun saveLocation(
+        latitude: Double,
+        longitude: Double
+    ) {
+        try {
 
+            val emitobj = JSONObject()
+            emitobj.put("_id", userPref.getString("id", "")?.toInt()!!)
+            emitobj.put("lat",latitude)
+            emitobj.put("lon", longitude)
+
+
+            Log.d("emitobj", "emitobj = ${emitobj}")
+            RetrofitApi().setLatLon(emitobj).enqueue(object : Callback<okhttp3.ResponseBody> {
+                override fun onFailure(call: Call<okhttp3.ResponseBody>, t: Throwable) {
+                    Log.e("response",t.localizedMessage)
+
+                }
+
+                override fun onResponse(
+                    call: Call<okhttp3.ResponseBody>,
+                    response: Response<okhttp3.ResponseBody>
+                ) {
+                    Log.e("response",response.body()?.string())
+
+                }
+
+            })
+
+
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+
+
+
+    }
     companion object {
         private val SERVER_IP = "http://162.243.225.225:4040"
         val DETAIL_REQUEST = 1
