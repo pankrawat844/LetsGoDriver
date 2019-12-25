@@ -1,25 +1,23 @@
 package com.driver
 
-import android.app.Activity
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.os.Handler
 import android.preference.PreferenceManager
 import android.util.Log
-import android.widget.Switch
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.driver.model.DriverLatLon
-import com.driver.model.DriverRawLatLon
+import com.driver.retrofit.UpdateLatLonApi
 import com.driver.utils.Common
 import com.driver.utils.DriverAllTripFeed
 import com.github.nkzawa.emitter.Emitter
-import com.github.nkzawa.socketio.client.IO
 import com.github.nkzawa.socketio.client.Socket
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -29,8 +27,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.gson.JsonObject
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu
 import com.koushikdutta.ion.Ion
 import kotlinx.android.synthetic.main.activity_home.*
@@ -40,9 +36,7 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.net.URISyntaxException
 import java.util.*
-import kotlin.collections.HashMap
 
 class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
     var googleMap: GoogleMap? = null
@@ -54,7 +48,7 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
     var common = Common()
     var driverAllTripArray: ArrayList<DriverAllTripFeed>? = null
     lateinit var userPref: SharedPreferences
-    lateinit var mFusedLocationProviderClient:FusedLocationProviderClient
+    lateinit var mFusedLocationProviderClient: FusedLocationProviderClient
     lateinit var gps: GPSTracker
     var latitude: Double = 0.toDouble()
     var longitude: Double = 0.toDouble()
@@ -69,28 +63,12 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
         if (gps.canGetLocation()) {
             latitude = gps.getLatitude()
             longitude = gps.getLongitude()
-        } else {
-            gps.showSettingsAlert()
-        }
-        map = supportFragmentManager.findFragmentById(R.id.map_view) as SupportMapFragment
-        map.getMapAsync(this)
-        val mGeoDataClient = Places.getGeoDataClient(this)
-        val mPlaceDetectionClient = Places.getPlaceDetectionClient(this)
-        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-        slidingMenu = SlidingMenu(this)
-        slidingMenu.mode = SlidingMenu.LEFT
-        slidingMenu.touchModeAbove = SlidingMenu.TOUCHMODE_FULLSCREEN
-        slidingMenu.setBehindOffsetRes(R.dimen.slide_menu_width)
-        slidingMenu.setFadeDegree(0.20f)
-        slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT)
-        slidingMenu.setMenu(R.layout.left_menu)
-        common.SlideMenuDesign(slidingMenu, this@HomeActivity, "mhome")
-        layout_slidemenu.setOnClickListener { slidingMenu.toggle() }
-        val timer=Timer()
+            val timer = Timer()
 
-        timer.scheduleAtFixedRate(object :TimerTask(){
-            override fun run() {
-                if (gps.canGetLocation()) {
+            timer.scheduleAtFixedRate(object : TimerTask() {
+                override fun run() {
+                    if (Utility.isNetworkAvailable(this@HomeActivity)) {
+                        if (gps.canGetLocation()) {
 //                    try {
 //                        mSocket = IO.socket(SERVER_IP)
 //                        mSocket!!.emit(
@@ -114,11 +92,30 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
 //                        common,
 //                        userPref
 //                    )
-                    saveLocation(latitude,longitude)
+                            saveLocation(latitude, longitude)
+                        }
+                    }
                 }
-            }
 
-        },2000,2000)
+            }, 6000, 10000)
+        } else {
+            gps.showSettingsAlert()
+        }
+        map = supportFragmentManager.findFragmentById(R.id.map_view) as SupportMapFragment
+        map.getMapAsync(this)
+        val mGeoDataClient = Places.getGeoDataClient(this)
+        val mPlaceDetectionClient = Places.getPlaceDetectionClient(this)
+        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+        slidingMenu = SlidingMenu(this)
+        slidingMenu.mode = SlidingMenu.LEFT
+        slidingMenu.touchModeAbove = SlidingMenu.TOUCHMODE_FULLSCREEN
+        slidingMenu.setBehindOffsetRes(R.dimen.slide_menu_width)
+        slidingMenu.setFadeDegree(0.20f)
+        slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT)
+        slidingMenu.setMenu(R.layout.left_menu)
+        common.SlideMenuDesign(slidingMenu, this@HomeActivity, "mhome")
+        layout_slidemenu.setOnClickListener { slidingMenu.toggle() }
+
 
 
     }
@@ -210,7 +207,8 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
             if (mLocationPermissionGranted) {
                 val locationResult = mFusedLocationProviderClient.lastLocation
 
-                locationResult.addOnCompleteListener(this@HomeActivity
+                locationResult.addOnCompleteListener(
+                    this@HomeActivity
                 ) { task ->
                     if (task.isSuccessful) {
                         // Set the map's camera position to the current location of the device.
@@ -228,7 +226,7 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
                         Log.e("TAG", "Exception: %s", task.exception)
                         googleMap!!.animateCamera(
                             CameraUpdateFactory.newLatLngZoom(
-                                LatLng(28.7407056,77.0577491),
+                                LatLng(28.7407056, 77.0577491),
                                 15f
                             )
                         )
@@ -269,7 +267,7 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
                             val tripArray = JSONArray(resObj.getString("all_trip"))
                             for (t in 0 until tripArray.length()) {
                                 val trpObj = tripArray.getJSONObject(t)
-                                if(trpObj.getString("status").equals("0")) {
+                                if (trpObj.getString("status").equals("0")) {
                                     val allTripFeed = DriverAllTripFeed()
                                     allTripFeed.id = trpObj.getString("id")
                                     allTripFeed.driverFlag = trpObj.getString("driver_flag")
@@ -290,7 +288,6 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
                                     allTripFeed.perMinuteRate = trpObj.getString("per_minute_rate")
                                     allTripFeed.pickupLat = trpObj.getString("pickup_lat")
                                     allTripFeed.pickupLongs = trpObj.getString("pickup_longs")
-
                                 }
                             }
                             Log.d(
@@ -316,8 +313,7 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
                                 editor.clear()
                                 editor.commit()
                                 Handler().postDelayed({
-                                    val intent =
-                                        Intent(this, MainActivity::class.java)
+                                    val intent = Intent(this, MainActivity::class.java)
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                                     startActivity(intent)
@@ -353,16 +349,15 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
     ) {
         try {
 
-            val emitobj = JSONObject()
-            emitobj.put("_id", userPref.getString("id", "")?.toInt()!!)
-            emitobj.put("lat",latitude)
-            emitobj.put("lon", longitude)
 
-
-            Log.d("emitobj", "emitobj = ${emitobj}")
-            RetrofitApi().setLatLon(emitobj).enqueue(object : Callback<okhttp3.ResponseBody> {
+            UpdateLatLonApi().savelocation(
+                userPref.getString("id", "")?.toInt()!!,
+                latitude,
+                longitude,
+                getCityFromLatLon(latitude,longitude)
+            ).enqueue(object : Callback<okhttp3.ResponseBody> {
                 override fun onFailure(call: Call<okhttp3.ResponseBody>, t: Throwable) {
-                    Log.e("response",t.localizedMessage)
+                    Log.e("response", t.localizedMessage)
 
                 }
 
@@ -370,7 +365,7 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
                     call: Call<okhttp3.ResponseBody>,
                     response: Response<okhttp3.ResponseBody>
                 ) {
-                    Log.e("response",response.body()?.string())
+                    Log.e("response", response.body()?.string())
 
                 }
 
@@ -383,6 +378,25 @@ class HomeActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
 
+    }
+    fun getCityFromLatLon(lat: Double, lon: Double):String {
+        var addresses: List<Address>
+        val geocoder = Geocoder(this, Locale.getDefault());
+
+        addresses = geocoder.getFromLocation(
+            lat,
+            lon,
+            1
+        ); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+
+        val address = addresses[0]
+            .getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+        val city = addresses[0].locality;
+        val state = addresses[0].adminArea;
+        val country = addresses[0].countryName;
+        val postalCode = addresses[0].postalCode;
+        val knownName = addresses[0].featureName;
+        return city
     }
     companion object {
         private val SERVER_IP = "http://162.243.225.225:4040"

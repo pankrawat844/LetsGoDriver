@@ -121,7 +121,6 @@ class CabPopupActivity : AppCompatActivity(), OnMapReadyCallback {
                     // do stuff with the result or error
                     Log.d("load_trips result", "load_trips result = $result==$error")
                     customCountdownTimer!!.onFinish()
-
                     loader.cancel()
                     if (error == null) {
 
@@ -254,21 +253,11 @@ class CabPopupActivity : AppCompatActivity(), OnMapReadyCallback {
 
             //Log.d("dialog dataArray","dialog pickup location = "+ URLDecoder.decode(booking_data.getString("pickup"),"UTF-8"));
 
-            txt_address_val.text = URLDecoder.decode(booking_data.getString("pickup"), "UTF-8")
+            txt_address_val.text = URLDecoder.decode(booking_data.getString("pickup_area"), "UTF-8")
 
-            val dataArray = JSONArray(booking_data.getString("data"))
-            Log.d("dialog dataArray", "dialog dataArray = " + dataArray.length())
-            for (di in 0 until dataArray.length()) {
-                val dataObj = dataArray.getJSONObject(di)
-                val Lotlon = dataObj.getString("loc")
-                //JSONArray LotLanArray = new JSONArray(dataObj.getString("loc"));
-                val SplLotlon = Lotlon.split("\\,".toRegex()).dropLastWhile({ it.isEmpty() }).toTypedArray()
 
-                val DrvLat = SplLotlon[0].replace("[", "")
-                val DrvLng = SplLotlon[1].replace("]", "")
-                val UserLarLng = LatLng(java.lang.Double.parseDouble(DrvLat), java.lang.Double.parseDouble(DrvLng))
+                val UserLarLng = LatLng(java.lang.Double.parseDouble(booking_data.getString("pickup_lat")), java.lang.Double.parseDouble(booking_data.getString("pickup_long")))
 
-                Log.d("Lotlon", "dialog Lotlon = $DrvLng==$DrvLat")
 
                 mMap!!.addMarker(MarkerOptions().position(UserLarLng)
                         .title(txt_address_val.text.toString()))
@@ -277,12 +266,12 @@ class CabPopupActivity : AppCompatActivity(), OnMapReadyCallback {
                         .zoom(10f)                   // Sets the zoom
                         .build()                   // Creates a CameraPosition from the builder
                 mMap!!.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
-            }
+
 
             val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 
-            val EndTime = URLDecoder.decode(booking_data.getString("end_time"), "UTF-8")
-            val StartTime = URLDecoder.decode(booking_data.getString("start_time"), "UTF-8")
+            val EndTime = URLDecoder.decode(booking_data.getString("departure_date_time"), "UTF-8")
+            val StartTime = URLDecoder.decode(booking_data.getString("book_create_date_time"), "UTF-8")
             Log.d("Lotlon", "dialog StartTime = $StartTime==$EndTime")
 
             try {
@@ -299,7 +288,7 @@ class CabPopupActivity : AppCompatActivity(), OnMapReadyCallback {
             customCountdownTimer = Common.acceptRejectTimer(this@CabPopupActivity, timmer_progress, accpet_time, minutes_value, "cabpopupActivity")
             customCountdownTimer!!.start()
 
-            Common.BookingId = booking_data.getString("booking_id")
+            Common.BookingId = booking_data.getString("id")
 
         } catch (e: JSONException) {
             e.printStackTrace()

@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ka-rGE\\values-ka-rGE.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\KLIFF I5\\.gradle\\caches\\transforms-2\\files-2.1\\e2971354c70eedaeb921da72716aa0d2\\jetified-materialdatetimepicker-2.4.0\\res\\values-ka-rGE\\values-ka-rGE.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,167,272,384,467,579,698,811,907,999,1092,1180",
+                        "endColumns": "61,104,111,82,111,118,112,95,91,92,87,95",
+                        "endOffsets": "162,267,379,462,574,693,806,902,994,1087,1175,1271"
+                    }
+                }
+            ]
+        }
+    ]
+}

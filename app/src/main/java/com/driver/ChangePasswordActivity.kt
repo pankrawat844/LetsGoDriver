@@ -3,9 +3,9 @@ package com.driver
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Typeface
+import android.os.Bundle
 import android.os.Handler
 import android.preference.PreferenceManager
-import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -18,18 +18,15 @@ import android.widget.RelativeLayout
 import android.widget.Switch
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-
+import com.driver.utils.Common
 import com.github.nkzawa.emitter.Emitter
 import com.github.nkzawa.socketio.client.IO
 import com.github.nkzawa.socketio.client.Socket
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu
 import com.koushikdutta.ion.Ion
-import com.driver.utils.Common
-
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-
 import java.net.URISyntaxException
 
 class ChangePasswordActivity : AppCompatActivity() {
@@ -51,19 +48,19 @@ class ChangePasswordActivity : AppCompatActivity() {
 
     lateinit var userPref: SharedPreferences
 
-     var common = Common()
+    var common = Common()
     lateinit var driver_status: Switch
     lateinit var switch_driver_status: TextView
 
     lateinit var gps: GPSTracker
-     var latitude: Double = 0.toDouble()
-     var longitude: Double = 0.toDouble()
+    var latitude: Double = 0.toDouble()
+    var longitude: Double = 0.toDouble()
     lateinit var loader: LoaderView
 
     private var mSocket: Socket? = null
 
     //Error Alert
-    lateinit  var rlMainView: RelativeLayout
+    lateinit var rlMainView: RelativeLayout
     lateinit var tvTitle: TextView
 
     /**
@@ -96,11 +93,14 @@ class ChangePasswordActivity : AppCompatActivity() {
         }
 
         //Error Alert
-        rlMainView = findViewById(R.id.rlMainView) as RelativeLayout
-        val rlMainParam = RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        rlMainView = findViewById<RelativeLayout>(R.id.rlMainView)
+        val rlMainParam = RelativeLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
         rlMainParam.setMargins(0, resources.getDimension(R.dimen.height_50).toInt(), 0, 0)
         rlMainView.layoutParams = rlMainParam
-        tvTitle = findViewById(R.id.tvTitle) as TextView
+        tvTitle = findViewById<TextView>(R.id.tvTitle)
 
         slidingMenu = SlidingMenu(this)
         slidingMenu.mode = SlidingMenu.LEFT
@@ -112,14 +112,14 @@ class ChangePasswordActivity : AppCompatActivity() {
 
         common.SlideMenuDesign(slidingMenu, this@ChangePasswordActivity, "change password")
 
-        txt_change_password = findViewById(R.id.txt_change_password) as TextView
-        txt_change_password_button = findViewById(R.id.txt_change_password_button) as TextView
-        edit_current_pass = findViewById(R.id.edit_current_pass) as EditText
-        edit_new_pass = findViewById(R.id.edit_new_pass) as EditText
-        edit_con_pass = findViewById(R.id.edit_con_pass) as EditText
-        layout_change_password = findViewById(R.id.layout_change_password) as RelativeLayout
-        layout_menu = findViewById(R.id.layout_menu) as RelativeLayout
-        txt_forgot_password = findViewById(R.id.txt_forgot_password) as TextView
+        txt_change_password = findViewById<TextView>(R.id.txt_change_password)
+        txt_change_password_button = findViewById<TextView>(R.id.txt_change_password_button)
+        edit_current_pass = findViewById<EditText>(R.id.edit_current_pass)
+        edit_new_pass = findViewById<EditText>(R.id.edit_new_pass)
+        edit_con_pass = findViewById<EditText>(R.id.edit_con_pass)
+        layout_change_password = findViewById<RelativeLayout>(R.id.layout_change_password)
+        layout_menu = findViewById<RelativeLayout>(R.id.layout_menu)
+        txt_forgot_password = findViewById<TextView>(R.id.txt_forgot_password)
 
         userPref = PreferenceManager.getDefaultSharedPreferences(this@ChangePasswordActivity)
 
@@ -137,83 +137,135 @@ class ChangePasswordActivity : AppCompatActivity() {
 
         layout_change_password.setOnClickListener(View.OnClickListener {
             if (edit_current_pass.text.toString().trim { it <= ' ' }.length == 0) {
-                Utility.showMKPanelError(this@ChangePasswordActivity, resources.getString(R.string.please_enter_current_password), rlMainView, tvTitle, regularRoboto)
+                Utility.showMKPanelError(
+                    this@ChangePasswordActivity,
+                    resources.getString(R.string.please_enter_current_password),
+                    rlMainView,
+                    tvTitle,
+                    regularRoboto
+                )
                 edit_current_pass.requestFocus()
                 return@OnClickListener
-            } else if (edit_current_pass.text.toString().trim { it <= ' ' } != userPref.getString("password", "")) {
-                Utility.showMKPanelError(this@ChangePasswordActivity, resources.getString(R.string.please_current_password), rlMainView, tvTitle, regularRoboto)
+            } else if (edit_current_pass.text.toString().trim { it <= ' ' } != userPref.getString(
+                    "password",
+                    ""
+                )) {
+                Utility.showMKPanelError(
+                    this@ChangePasswordActivity,
+                    resources.getString(R.string.please_current_password),
+                    rlMainView,
+                    tvTitle,
+                    regularRoboto
+                )
                 edit_current_pass.requestFocus()
                 return@OnClickListener
             } else if (edit_new_pass.text.toString().trim { it <= ' ' }.length == 0) {
-                Utility.showMKPanelError(this@ChangePasswordActivity, resources.getString(R.string.please_enter_new_password), rlMainView, tvTitle, regularRoboto)
+                Utility.showMKPanelError(
+                    this@ChangePasswordActivity,
+                    resources.getString(R.string.please_enter_new_password),
+                    rlMainView,
+                    tvTitle,
+                    regularRoboto
+                )
                 edit_new_pass.requestFocus()
                 return@OnClickListener
             } else if (edit_new_pass.text.toString().trim { it <= ' ' }.length < 8 || edit_new_pass.text.toString().trim { it <= ' ' }.length > 32) {
-                Utility.showMKPanelError(this@ChangePasswordActivity, resources.getString(R.string.password_new_length), rlMainView, tvTitle, regularRoboto)
+                Utility.showMKPanelError(
+                    this@ChangePasswordActivity,
+                    resources.getString(R.string.password_new_length),
+                    rlMainView,
+                    tvTitle,
+                    regularRoboto
+                )
                 edit_new_pass.requestFocus()
                 return@OnClickListener
             } else if (edit_con_pass.text.toString().trim { it <= ' ' }.length == 0) {
-                Utility.showMKPanelError(this@ChangePasswordActivity, resources.getString(R.string.please_enter_confirm_password), rlMainView, tvTitle, regularRoboto)
+                Utility.showMKPanelError(
+                    this@ChangePasswordActivity,
+                    resources.getString(R.string.please_enter_confirm_password),
+                    rlMainView,
+                    tvTitle,
+                    regularRoboto
+                )
                 edit_con_pass.requestFocus()
                 return@OnClickListener
             } else if (edit_new_pass.text.toString() != edit_con_pass.text.toString()) {
-                Utility.showMKPanelError(this@ChangePasswordActivity, resources.getString(R.string.password_new_confirm), rlMainView, tvTitle, regularRoboto)
+                Utility.showMKPanelError(
+                    this@ChangePasswordActivity,
+                    resources.getString(R.string.password_new_confirm),
+                    rlMainView,
+                    tvTitle,
+                    regularRoboto
+                )
                 edit_con_pass.requestFocus()
                 return@OnClickListener
             }
 
             if (Common.isNetworkAvailable(this@ChangePasswordActivity)) {
                 loader.show()
-                val DrvChangPasswordUrl = Url.DriverChangPasswordUrl + "?password=" + edit_new_pass.text.toString() + "&did=" + userPref.getString("id", "")
+                val DrvChangPasswordUrl =
+                    Url.DriverChangPasswordUrl + "?password=" + edit_new_pass.text.toString() + "&did=" + userPref.getString(
+                        "id",
+                        ""
+                    )
                 Log.d("DrvBookingUrl", "DrvBookingUrl =$DrvChangPasswordUrl")
                 Ion.with(this@ChangePasswordActivity)
-                        .load(DrvChangPasswordUrl)
-                        .asJsonObject()
-                        .setCallback { error, result ->
-                            // do stuff with the result or error
-                            Log.d("load_trips result", "load_trips result = $result==$error")
-                            loader.cancel()
-                            if (error == null) {
-                                try {
-                                    val password = userPref.edit()
-                                    password.putString("password", edit_new_pass.text.toString().trim { it <= ' ' })
-                                    password.commit()
+                    .load(DrvChangPasswordUrl)
+                    .asJsonObject()
+                    .setCallback { error, result ->
+                        // do stuff with the result or error
+                        Log.d("load_trips result", "load_trips result = $result==$error")
+                        loader.cancel()
+                        if (error == null) {
+                            try {
+                                val password = userPref.edit()
+                                password.putString(
+                                    "password",
+                                    edit_new_pass.text.toString().trim { it <= ' ' })
+                                password.commit()
+                                val resObj = JSONObject(result.toString())
+                                if (resObj.getString("status") == "success") {
+                                    Common.showMkSuccess(
+                                        this@ChangePasswordActivity,
+                                        resObj.getString("message"),
+                                        "yes"
+                                    )
+                                    edit_new_pass.setText("")
+                                    edit_current_pass.setText("")
+                                    edit_con_pass.setText("")
+                                } else if (resObj.getString("status") == "false") {
 
-                                    val resObj = JSONObject(result.toString())
-                                    if (resObj.getString("status") == "success") {
+                                    Common.showMkError(
+                                        this@ChangePasswordActivity,
+                                        resObj.getString("error code").toString()
+                                    )
 
-                                        Common.showMkSuccess(this@ChangePasswordActivity, resObj.getString("message"), "yes")
+                                    if (resObj.has("Isactive") && resObj.getString("Isactive") == "Inactive") {
 
-                                        edit_new_pass.setText("")
-                                        edit_current_pass.setText("")
-                                        edit_con_pass.setText("")
-                                    } else if (resObj.getString("status") == "false") {
+                                        val editor = userPref.edit()
+                                        editor.clear()
+                                        editor.commit()
 
-                                        Common.showMkError(this@ChangePasswordActivity, resObj.getString("error code").toString())
-
-                                        if (resObj.has("Isactive") && resObj.getString("Isactive") == "Inactive") {
-
-                                            val editor = userPref.edit()
-                                            editor.clear()
-                                            editor.commit()
-
-                                            Handler().postDelayed({
-                                                val intent = Intent(this@ChangePasswordActivity, MainActivity::class.java)
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                                                startActivity(intent)
-                                                finish()
-                                            }, 2500)
-                                        }
+                                        Handler().postDelayed({
+                                            val intent = Intent(
+                                                this@ChangePasswordActivity,
+                                                MainActivity::class.java
+                                            )
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                                            startActivity(intent)
+                                            finish()
+                                        }, 2500)
                                     }
-                                } catch (e: JSONException) {
-                                    e.printStackTrace()
                                 }
-
-                            } else {
-                                Common.showHttpErrorMessage(this@ChangePasswordActivity, error.message)
+                            } catch (e: JSONException) {
+                                e.printStackTrace()
                             }
+
+                        } else {
+                            Common.showHttpErrorMessage(this@ChangePasswordActivity, error.message)
                         }
+                    }
             }
         })
 
@@ -234,7 +286,10 @@ class ChangePasswordActivity : AppCompatActivity() {
         }
 
         driver_status.setOnCheckedChangeListener { compoundButton, b ->
-            Log.d("is Checked", "is Checked = " + b + "==" + userPref.getBoolean("isBookingAccept", false))
+            Log.d(
+                "is Checked",
+                "is Checked = " + b + "==" + userPref.getBoolean("isBookingAccept", false)
+            )
             if (b) {
                 if (gps.canGetLocation()) {
                     try {
@@ -247,7 +302,15 @@ class ChangePasswordActivity : AppCompatActivity() {
                         Log.d("connected ", "connected error = " + e.message)
                     }
 
-                    Common.socketFunction(this@ChangePasswordActivity, mSocket!!, driver_status, latitude, longitude, common, userPref)
+                    Common.socketFunction(
+                        this@ChangePasswordActivity,
+                        mSocket!!,
+                        driver_status,
+                        latitude,
+                        longitude,
+                        common,
+                        userPref
+                    )
                     switch_driver_status.text = resources.getString(R.string.on_duty)
                 } else {
                     switch_driver_status.text = resources.getString(R.string.off_duty)
@@ -296,10 +359,22 @@ class ChangePasswordActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
-                Log.d("charSequence", "charSequence = " + charSequence.length + "==" + rlMainView.visibility + "==" + View.VISIBLE)
+                Log.d(
+                    "charSequence",
+                    "charSequence = " + charSequence.length + "==" + rlMainView.visibility + "==" + View.VISIBLE
+                )
                 if (charSequence.length > 0 && rlMainView.visibility == View.VISIBLE) {
                     if (!isFinishing) {
-                        val slideUp = TranslateAnimation(Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, -100f)
+                        val slideUp = TranslateAnimation(
+                            Animation.RELATIVE_TO_SELF,
+                            0f,
+                            Animation.RELATIVE_TO_SELF,
+                            0f,
+                            Animation.RELATIVE_TO_SELF,
+                            0f,
+                            Animation.RELATIVE_TO_SELF,
+                            -100f
+                        )
                         slideUp.duration = 10
                         slideUp.fillAfter = true
                         rlMainView.startAnimation(slideUp)

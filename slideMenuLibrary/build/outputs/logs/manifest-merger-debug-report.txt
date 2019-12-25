@@ -1,0 +1,45 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:2:1-12:12
+INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:2:1-12:12
+INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:2:1-12:12
+INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:2:1-12:12
+INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:2:1-12:12
+INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:2:1-12:12
+INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:2:1-12:12
+	package
+		ADDED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:3:5-50
+		INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml
+		INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml
+	android:versionName
+		ADDED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:5:5-30
+		INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml
+		INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:2:11-69
+	android:versionCode
+		ADDED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:4:5-28
+		INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml
+		INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:7:5-67
+	android:name
+		ADDED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:7:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:8:5-79
+	android:name
+		ADDED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:8:22-76
+uses-sdk
+ADDED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:10:5-47
+INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:10:5-47
+INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:10:5-47
+INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:10:5-47
+INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:10:5-47
+	android:targetSdkVersion
+		ADDED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:10:15-44
+		INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml
+		INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml
+		ADDED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:10:5-47
+		INJECTED from D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml

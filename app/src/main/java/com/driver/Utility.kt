@@ -58,7 +58,7 @@ object Utility {
     }
 
 
-    fun showMKPanelErrorServer(act: Activity, error_code: String, rlMainView: RelativeLayout, tvTitle: TextView, typeface: Typeface) {
+    fun showMKPanelErrorServer(act: Activity, error_code: String,error_msg:String, rlMainView: RelativeLayout, tvTitle: TextView, typeface: Typeface) {
         if (!act.isFinishing && rlMainView.visibility == View.GONE) {
 
             Log.d("rlMainView", "rlMainView = " + rlMainView.visibility + "==" + View.GONE)
@@ -95,6 +95,10 @@ object Utility {
                 message = act.resources.getString(R.string.license_numbet_exits)
             } else if (error_code == "22") {
                 message = act.resources.getString(R.string.dublicate_booking)
+            }else
+            {
+                message = error_msg
+
             }
 
             rlMainView.setBackgroundResource(R.color.mk_error)

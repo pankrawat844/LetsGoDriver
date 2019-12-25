@@ -40,7 +40,6 @@
                         custom:donut_progress="0"
                         custom:donut_max="60">
 
-
                     </com.github.lzyzsd.circleprogress.DonutProgress>
 
                     <com.driver.utils.CustomMap

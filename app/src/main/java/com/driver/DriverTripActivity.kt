@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.driver.Adapter.DriverAllTripAdapter
+import com.driver.retrofit.RideApi
 import com.driver.utils.Common
 import com.driver.utils.DriverAllTripFeed
 import com.github.nkzawa.emitter.Emitter
@@ -33,9 +34,13 @@ import cz.msebera.android.httpclient.impl.client.DefaultHttpClient
 import cz.msebera.android.httpclient.params.BasicHttpParams
 import cz.msebera.android.httpclient.params.HttpConnectionParams
 import cz.msebera.android.httpclient.protocol.HTTP
+import okhttp3.ResponseBody
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.IOException
 import java.io.InputStream
 import java.net.URISyntaxException
@@ -52,8 +57,8 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
     lateinit var recycle_all_trip: RecyclerView
     lateinit var swipe_refresh_layout: SwipeRefreshLayout
     lateinit var layout_background: RelativeLayout
-    lateinit var layout_no_recourd_found: RelativeLayout
-    lateinit var layout_recycleview: LinearLayout
+    private lateinit var layout_no_recourd_found: RelativeLayout
+    private lateinit var layoutRecycleview: LinearLayout
 
     lateinit var OpenSans_Bold: Typeface
     lateinit var OpenSans_Regular: Typeface
@@ -85,6 +90,7 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
 
     var receiver: BroadcastReceiver? = null
     var savedInstState: Bundle? = null
+    private  var timer:Timer?=null
 
     /**
      * Listener for socket connection error.. listener registered at the time of socket connection
@@ -92,7 +98,7 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
     private val onConnectError = Emitter.Listener {
         runOnUiThread {
             if (mSocket != null)
-                if (mSocket!!.connected() == false) {
+                if (!mSocket!!.connected()) {
                     Log.d("connected", "connected error= " + mSocket!!.connected())
                     //socketConnection();
                 } else {
@@ -106,17 +112,17 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
         super.onCreate(savedInstanceState)
         savedInstState = savedInstanceState
         setContentView(R.layout.activity_driver_trip)
-
+        timer = Timer()
         userPref = PreferenceManager.getDefaultSharedPreferences(this@DriverTripActivity)
 
-        layout_slidemenu = findViewById<RelativeLayout>(R.id.layout_slidemenu)
-        txt_all_trip = findViewById<TextView>(R.id.txt_all_trip)
-        layout_filter = findViewById<RelativeLayout>(R.id.layout_filter)
-        recycle_all_trip = findViewById<RecyclerView>(R.id.recycle_all_trip)
-        swipe_refresh_layout = findViewById<SwipeRefreshLayout>(R.id.swipe_refresh_layout)
-        layout_background = findViewById<RelativeLayout>(R.id.layout_background)
-        layout_no_recourd_found = findViewById<RelativeLayout>(R.id.layout_no_recourd_found)
-        layout_recycleview = findViewById<LinearLayout>(R.id.layout_recycleview)
+        layout_slidemenu = findViewById(R.id.layout_slidemenu)
+        txt_all_trip = findViewById(R.id.txt_all_trip)
+        layout_filter = findViewById(R.id.layout_filter)
+        recycle_all_trip = findViewById(R.id.recycle_all_trip)
+        swipe_refresh_layout = findViewById(R.id.swipe_refresh_layout)
+        layout_background = findViewById(R.id.layout_background)
+        layout_no_recourd_found = findViewById(R.id.layout_no_recourd_found)
+        layoutRecycleview = findViewById(R.id.layout_recycleview)
 
         loader = LoaderView(this@DriverTripActivity)
 
@@ -153,7 +159,7 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
             driver_status.isChecked = false
             switch_driver_status.text = resources.getString(R.string.off_duty)
         }
-        driver_status.setOnCheckedChangeListener { compoundButton, b ->
+        driver_status.setOnCheckedChangeListener { _, b ->
             Log.d(
                 "is Checked",
                 "is Checked = " + b + "==" + userPref.getBoolean("isBookingAccept", false)
@@ -218,9 +224,9 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
             }
         }
 
-        recycle_all_trip = findViewById<RecyclerView>(R.id.recycle_all_trip)
-        swipe_refresh_layout = findViewById<SwipeRefreshLayout>(R.id.swipe_refresh_layout)
-        layout_recycleview = findViewById<LinearLayout>(R.id.layout_recycleview)
+        recycle_all_trip = findViewById(R.id.recycle_all_trip)
+        swipe_refresh_layout = findViewById(R.id.swipe_refresh_layout)
+        layoutRecycleview = findViewById(R.id.layout_recycleview)
 
         AllTripLayoutManager = LinearLayoutManager(this)
         recycle_all_trip.layoutManager = AllTripLayoutManager
@@ -230,7 +236,7 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
                 recycle_all_trip.isClickable = false
                 recycle_all_trip.isEnabled = false
                 var allFilter = false
-                if (userPref.getBoolean("setFilter", false) == true) {
+                if (userPref.getBoolean("setFilter", false)) {
                     if (userPref.getInt("pending booking", 4) == 0) {
                         FilterString += 0.toString() + ","
                         allFilter = true
@@ -292,7 +298,7 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
         Handler().postDelayed({
             if (Common.isNetworkAvailable(this@DriverTripActivity)) {
                 var allFilter = false
-                if (userPref.getBoolean("setFilter", false) == true) {
+                if (userPref.getBoolean("setFilter", false)) {
                     if (userPref.getInt("pending booking", 4) == 0) {
                         FilterString += 0.toString() + ","
                         allFilter = true
@@ -503,6 +509,8 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
 
             FilterString = ""
         }
+
+
     }
 
     override fun AcceptCabBookin(position: Int) {
@@ -660,7 +668,7 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
 
     override fun scrollToLoad(position: Int) {
         var allFilter = false
-        if (userPref.getBoolean("setFilter", false) == true) {
+        if (userPref.getBoolean("setFilter", false)) {
             if (userPref.getInt("pending booking", 4) == 0) {
                 FilterString += 0.toString() + ","
                 allFilter = true
@@ -773,7 +781,9 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
                 }
             }
         }
+
     }
+
 
     fun filterAllDriverTrips(offset: Int, filter: String, is_pull: Boolean) {
         if (offset == 0)
@@ -831,7 +841,7 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
                             )
                             if (driverAllTripArray != null && driverAllTripArray!!.size > 0) {
                                 if (offset == 0) {
-                                    layout_recycleview.visibility = View.VISIBLE
+                                    layoutRecycleview.visibility = View.VISIBLE
                                     layout_no_recourd_found.visibility = View.GONE
                                     drvAllTripAdapter = DriverAllTripAdapter(
                                         this@DriverTripActivity,
@@ -869,7 +879,7 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
                             }
                         } else {
                             if (offset == 0) {
-                                layout_recycleview.visibility = View.GONE
+                                layoutRecycleview.visibility = View.GONE
                                 layout_no_recourd_found.visibility = View.VISIBLE
                             } else {
 
@@ -945,7 +955,7 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
                             )
                             if (driverAllTripArray != null && driverAllTripArray!!.size > 0) {
                                 if (offset == 0) {
-                                    layout_recycleview.visibility = View.VISIBLE
+                                    layoutRecycleview.visibility = View.VISIBLE
                                     layout_no_recourd_found.visibility = View.GONE
                                     Log.e("DriverAllTripArray", savedInstState.toString())
                                     drvAllTripAdapter =
@@ -982,7 +992,7 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
                             }
                         } else {
                             if (offset == 0) {
-                                layout_recycleview.visibility = View.GONE
+                                layoutRecycleview.visibility = View.GONE
                                 layout_no_recourd_found.visibility = View.VISIBLE
                             } else {
                                 //Toast.makeText(DriverTripActivity.this, resObj.getString("message").toString(), Toast.LENGTH_LONG).show();
@@ -1089,11 +1099,7 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
         AsyncTask<String, Void, String>() {
 
 
-        private val userPref: SharedPreferences
-
-        init {
-            userPref = PreferenceManager.getDefaultSharedPreferences(activity)
-        }
+        private val userPref: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity)
 
         override fun doInBackground(vararg args: String): String {
             // Create a new HttpClient and Post Header
@@ -1229,6 +1235,21 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        try {
+
+
+//            timer?.let {
+//                it?.cancel()
+//                it?.purge()
+//            }
+        }catch (e:Exception)
+        {
+            e.printStackTrace()
+        }
+    }
+
     override fun onResume() {
         super.onResume()
 
@@ -1241,7 +1262,6 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
             Common.profile_edit = 0
         }
         if (Common.BookingId != "") {
-
             if (Common.isNetworkAvailable(this@DriverTripActivity)) {
                 Common.BookingId = ""
                 recycle_all_trip.isClickable = false
@@ -1303,10 +1323,64 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
             Common.BookingId = ""
         }
 
+        timer?.schedule(TimerTastforRide(), 10000)
     }
 
     companion object {
-        private val SERVER_IP = "http://162.243.225.225:4040"
-        val DETAIL_REQUEST = 1
+        private const val SERVER_IP = "http://162.243.225.225:4040"
+        const val DETAIL_REQUEST = 1
+    }
+
+    inner class TimerTastforRide :TimerTask()
+    {
+        override fun run() {
+            if (Utility.isNetworkAvailable(this@DriverTripActivity)) {
+
+                RideApi().get_ride_notification(userPref.getString("id","")!!).enqueue(object:Callback<ResponseBody>{
+                    override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+
+                    }
+
+                    override fun onResponse(
+                        call: Call<ResponseBody>,
+                        response: Response<ResponseBody>
+                    ) {
+                        try {
+
+                            val res = response.body()?.string()
+                            Log.e("response....", res);
+                            val data = JSONObject(res)
+                            if (data.getBoolean("status")) {
+                                Log.d("data", "connected data = $data")
+                                val ai =
+                                    Intent(
+                                        this@DriverTripActivity,
+                                        CabPopupActivity::class.java
+                                    )
+                                ai.putExtra(
+                                    "booking_data",
+                                    data.getJSONArray("data").getJSONObject(0).toString()
+                                )
+                                finish()
+                                startActivity(ai)
+
+
+                            } else
+                            {
+                                Log.e("response","no data found for driver.")
+                                timer?.schedule(TimerTastforRide(), 10000)
+                            }
+                        }catch (e:IOException)
+                        {
+                            e.printStackTrace()
+                        }
+                    }
+                })
+
+            }else
+            {
+                timer?.schedule(TimerTastforRide(), 10000)
+            }
+        }
     }
 }

@@ -1,0 +1,21 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.jeremyfeinstein.slidingmenu.lib"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+7-->D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:10:5-47
+8        android:minSdkVersion="15"
+8-->D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:10:5-47
+9        android:targetSdkVersion="23" />
+9-->D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:10:15-44
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:7:5-67
+11-->D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:7:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:8:5-79
+12-->D:\Android projects\LetsGoDriver\slideMenuLibrary\AndroidManifest.xml:8:22-76
+13
+14</manifest>

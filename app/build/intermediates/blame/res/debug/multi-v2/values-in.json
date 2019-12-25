@@ -1,0 +1,230 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-in\\values-in.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\KLIFF I5\\.gradle\\caches\\transforms-2\\files-2.1\\59eacedc0032b5a79f0d4e688f3633a1\\jetified-play-services-wallet-12.0.1\\res\\values-in\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "202",
+                        "endColumns": "102",
+                        "endOffsets": "304"
+                    },
+                    "to": {
+                        "startLines": "132",
+                        "startColumns": "4",
+                        "startOffsets": "13913",
+                        "endColumns": "106",
+                        "endOffsets": "14015"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\KLIFF I5\\.gradle\\caches\\transforms-2\\files-2.1\\b642488b33cc0875d827359bfb2e1e2e\\jetified-play-services-basement-12.0.1\\res\\values-in\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "190",
+                        "endOffsets": "437"
+                    },
+                    "to": {
+                        "startLines": "76",
+                        "startColumns": "4",
+                        "startOffsets": "7993",
+                        "endColumns": "190",
+                        "endOffsets": "8179"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\KLIFF I5\\.gradle\\caches\\transforms-2\\files-2.1\\bff3ffbc665ace4ead1a16fda2c11d92\\jetified-play-services-gcm-12.0.1\\res\\values-in\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "192",
+                        "endColumns": "100",
+                        "endOffsets": "292"
+                    },
+                    "to": {
+                        "startLines": "87",
+                        "startColumns": "4",
+                        "startOffsets": "9627",
+                        "endColumns": "104",
+                        "endOffsets": "9727"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\KLIFF I5\\.gradle\\caches\\transforms-2\\files-2.1\\893d39f04b7bb4a248330edd343f46f4\\jetified-play-services-ads-12.0.1\\res\\values-in\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10",
+                        "startColumns": "0,0,0,0,0,0,0",
+                        "startOffsets": "199,269,373,437,500,577,672",
+                        "endColumns": "69,103,63,62,76,94,66",
+                        "endOffsets": "268,372,436,499,576,671,738"
+                    },
+                    "to": {
+                        "startLines": "123,124,125,126,127,128,129",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "13160,13234,13342,13410,13477,13558,13657",
+                        "endColumns": "73,107,67,66,80,98,70",
+                        "endOffsets": "13229,13337,13405,13472,13553,13652,13723"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\KLIFF I5\\.gradle\\caches\\transforms-2\\files-2.1\\3aff6a702e99e127af3556c45134b51e\\mediarouter-1.0.0-alpha5\\res\\values-in\\values-in.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,155,261,372,480,577,660,755,863,959,1054,1155,1248,1367,1486,1569,1652,1738,1837,1939,2025",
+                        "endColumns": "99,105,110,107,96,82,94,107,95,94,100,92,118,118,82,82,85,98,101,85,95",
+                        "endOffsets": "150,256,367,475,572,655,750,858,954,1049,1150,1243,1362,1481,1564,1647,1733,1832,1934,2020,2116"
+                    },
+                    "to": {
+                        "startLines": "100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "10888,10988,11094,11205,11313,11410,11493,11588,11696,11792,11887,11988,12081,12200,12319,12402,12485,12571,12670,12772,12858",
+                        "endColumns": "99,105,110,107,96,82,94,107,95,94,100,92,118,118,82,82,85,98,101,85,95",
+                        "endOffsets": "10983,11089,11200,11308,11405,11488,11583,11691,11787,11882,11983,12076,12195,12314,12397,12480,12566,12665,12767,12853,12949"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\KLIFF I5\\.gradle\\caches\\transforms-2\\files-2.1\\7690869989d3314bb561509e9e4ad2c0\\appcompat-1.1.0\\res\\values-in\\values-in.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,220,324,429,516,620,736,819,898,989,1081,1176,1270,1371,1464,1559,1653,1744,1835,1920,2023,2128,2229,2333,2442,2550,2710,2809",
+                        "endColumns": "114,103,104,86,103,115,82,78,90,91,94,93,100,92,94,93,90,90,84,102,104,100,103,108,107,159,98,83",
+                        "endOffsets": "215,319,424,511,615,731,814,893,984,1076,1171,1265,1366,1459,1554,1648,1739,1830,1915,2018,2123,2224,2328,2437,2545,2705,2804,2888"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,130",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,220,324,429,516,620,736,819,898,989,1081,1176,1270,1371,1464,1559,1653,1744,1835,1920,2023,2128,2229,2333,2442,2550,2710,13728",
+                        "endColumns": "114,103,104,86,103,115,82,78,90,91,94,93,100,92,94,93,90,90,84,102,104,100,103,108,107,159,98,83",
+                        "endOffsets": "215,319,424,511,615,731,814,893,984,1076,1171,1265,1366,1459,1554,1648,1739,1830,1915,2018,2123,2224,2328,2437,2545,2705,2804,13807"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\KLIFF I5\\.gradle\\caches\\transforms-2\\files-2.1\\ffa8a47d2e3218f578d96a4fa53b9f6f\\jetified-play-services-cast-framework-12.0.1\\res\\values-in\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "260,334,431,520,636,767,856,1013,1133,1242,1361,1458,1558,1630,1719,1811,1915,1987,2057,2127,2206,2302,2401,2495,2590,2685,2758,2862,2955,3049,3160,3304,3400,3488,3588",
+                        "endColumns": "73,96,88,115,130,88,156,119,108,118,96,99,71,88,91,103,71,69,69,78,95,98,93,94,94,72,103,92,93,110,143,95,87,99,74",
+                        "endOffsets": "333,430,519,635,766,855,1012,1132,1241,1360,1457,1557,1629,1718,1810,1914,1986,2056,2126,2205,2301,2400,2494,2589,2684,2757,2861,2954,3048,3159,3303,3399,3487,3587,3662"
+                    },
+                    "to": {
+                        "startLines": "29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "2809,2887,2988,3081,3201,3332,3425,3586,3710,3823,3946,4047,4151,4227,4320,4416,4524,5085,5159,5233,5316,5416,5519,5617,5716,5815,5892,6000,6097,6195,6310,6454,6554,6646,6750",
+                        "endColumns": "77,100,92,119,130,92,160,123,112,122,100,103,75,92,95,107,75,73,73,82,99,102,97,98,98,76,107,96,97,114,143,99,91,103,78",
+                        "endOffsets": "2882,2983,3076,3196,3327,3420,3581,3705,3818,3941,4042,4146,4222,4315,4411,4519,4595,5154,5228,5311,5411,5514,5612,5711,5810,5887,5995,6092,6190,6305,6449,6549,6641,6745,6824"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\KLIFF I5\\.gradle\\caches\\transforms-2\\files-2.1\\a5e6e831030ff505e26247caad1e9777\\jetified-play-services-places-12.0.1\\res\\values-in\\values.xml",
+                    "from": {
+                        "startLines": "4,5",
+                        "startColumns": "0,0",
+                        "startOffsets": "195,299",
+                        "endColumns": "103,93",
+                        "endOffsets": "298,392"
+                    },
+                    "to": {
+                        "startLines": "121,122",
+                        "startColumns": "4,4",
+                        "startOffsets": "12954,13062",
+                        "endColumns": "107,97",
+                        "endOffsets": "13057,13155"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\KLIFF I5\\.gradle\\caches\\transforms-2\\files-2.1\\b2092884d61dfbfd1806fd9b905be122\\jetified-firebase-messaging-12.0.1\\res\\values-in\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "205",
+                        "endColumns": "103",
+                        "endOffsets": "308"
+                    },
+                    "to": {
+                        "startLines": "86",
+                        "startColumns": "4",
+                        "startOffsets": "9519",
+                        "endColumns": "107",
+                        "endOffsets": "9622"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\KLIFF I5\\.gradle\\caches\\transforms-2\\files-2.1\\221b0c3eba7ca3bfaa342cc27d7b182d\\jetified-play-services-base-12.0.1\\res\\values-in\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "245,350,546,670,774,988,1113,1254,1385,1610,1713,1908,2032,2246,2416,2506,2592",
+                        "endColumns": "104,195,123,103,213,124,140,130,224,102,194,123,213,169,89,85,103",
+                        "endOffsets": "349,545,669,773,987,1112,1253,1384,1609,1712,1907,2031,2245,2415,2505,2591,2695"
+                    },
+                    "to": {
+                        "startLines": "68,69,70,71,72,73,74,75,77,78,79,80,81,82,83,84,85",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "6829,6938,7134,7262,7370,7584,7713,7858,8184,8409,8516,8711,8839,9053,9227,9321,9411",
+                        "endColumns": "108,195,127,107,213,128,144,134,224,106,194,127,213,173,93,89,107",
+                        "endOffsets": "6933,7129,7257,7365,7579,7708,7853,7988,8404,8511,8706,8834,9048,9222,9316,9406,9514"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\KLIFF I5\\.gradle\\caches\\transforms-2\\files-2.1\\e48882234ce53f9c89ef4909eb3fecd2\\jetified-play-services-cast-12.0.1\\res\\values-in\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7",
+                        "startColumns": "0,0,0,0",
+                        "startOffsets": "250,388,527,625",
+                        "endColumns": "137,138,97,101",
+                        "endOffsets": "387,526,624,726"
+                    },
+                    "to": {
+                        "startLines": "46,47,48,49",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "4600,4738,4877,4979",
+                        "endColumns": "137,138,101,105",
+                        "endOffsets": "4733,4872,4974,5080"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\KLIFF I5\\.gradle\\caches\\transforms-2\\files-2.1\\825e89073ddd3666c914c3b143c6aa69\\core-1.1.0\\res\\values-in\\values-in.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "131",
+                        "startColumns": "4",
+                        "startOffsets": "13812",
+                        "endColumns": "100",
+                        "endOffsets": "13908"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\KLIFF I5\\.gradle\\caches\\transforms-2\\files-2.1\\e2971354c70eedaeb921da72716aa0d2\\jetified-materialdatetimepicker-2.4.0\\res\\values-in\\values-in.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,166,273,385,467,574,692,803,898,984,1074,1161",
+                        "endColumns": "60,106,111,81,106,117,110,94,85,89,86,99",
+                        "endOffsets": "161,268,380,462,569,687,798,893,979,1069,1156,1256"
+                    },
+                    "to": {
+                        "startLines": "88,89,90,91,92,93,94,95,96,97,98,99",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "9732,9793,9900,10012,10094,10201,10319,10430,10525,10611,10701,10788",
+                        "endColumns": "60,106,111,81,106,117,110,94,85,89,86,99",
+                        "endOffsets": "9788,9895,10007,10089,10196,10314,10425,10520,10606,10696,10783,10883"
+                    }
+                }
+            ]
+        }
+    ]
+}

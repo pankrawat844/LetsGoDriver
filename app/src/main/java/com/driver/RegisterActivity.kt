@@ -15,60 +15,50 @@ import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.graphics.Typeface
 import android.media.ExifInterface
+import android.media.MediaScannerConnection
 import android.net.Uri
+import android.os.Bundle
 import android.os.Environment
 import android.preference.PreferenceManager
 import android.provider.MediaStore
-
-import android.os.Bundle
-
 import android.text.InputFilter
 import android.util.Log
-import android.view.View
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
 import com.afollestad.materialdialogs.MaterialDialog
+import com.driver.Adapter.CarTypeAdapter
+import com.driver.utils.Common
 import com.google.android.material.textfield.TextInputEditText
 import com.koushikdutta.async.future.FutureCallback
 import com.koushikdutta.ion.Ion
 import com.squareup.picasso.Picasso
-import com.driver.Adapter.CarTypeAdapter
-import com.driver.utils.Common
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog
-
+import kotlinx.android.synthetic.main.register_step_one.*
 import org.apache.commons.lang3.text.WordUtils
 import org.json.JSONArray
 import org.json.JSONObject
-
-import java.io.File
-import java.io.FileOutputStream
+import java.io.*
 import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Date
-import java.util.GregorianCalendar
+import java.util.*
+import android.view.View as View1
 
 
-class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, CarTypeAdapter.OnCarTypeClickListener {
-
+class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener,
+    CarTypeAdapter.OnCarTypeClickListener {
 
     lateinit var regularRoboto: Typeface
     lateinit var boldRoboto: Typeface
     lateinit var regularOpenSans: Typeface
     lateinit var boldOpenSans: Typeface
-
     lateinit var layout_next: RelativeLayout
     lateinit var layout_back: RelativeLayout
     lateinit var layout_header_step_first: LinearLayout
@@ -92,13 +82,12 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
     lateinit var edt_reg_license_exp_date: TextInputEditText
     lateinit var edt_reg_license_plate: TextInputEditText
     lateinit var edt_reg_insuarance: TextInputEditText
-    lateinit var register_step_one: View
-    lateinit var register_step_two: View
-    lateinit var register_step_three: View
+    lateinit var register_step_one: View1
+    lateinit var register_step_two: View1
+    lateinit var register_step_three: View1
     lateinit var icon_pending_first: ImageView
     lateinit var icon_pending_fir_thd: ImageView
     lateinit var icon_pending_sec_thd: ImageView
-    lateinit var iv_user_photo: ImageView
     lateinit var tv_signin_register: TextView
 
     internal var RegisterStep = 0
@@ -124,7 +113,7 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
     lateinit var CarTypeDialog: Dialog
     lateinit var recycle_car_type: RecyclerView
     private var CarTypeLayoutManager: RecyclerView.LayoutManager? = null
-
+    lateinit var file: File
     private val imageUri: Uri
         get() {
             val file1 = File(Environment.getExternalStorageDirectory().toString() + "/Texi")
@@ -135,38 +124,91 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
             if (!file2.exists()) {
                 file2.mkdirs()
             }
-            val file = File(Environment.getExternalStorageDirectory().toString() + "/Texi/Camera/" + System.currentTimeMillis() + ".jpg")
-            return Uri.fromFile(file)
+            file =
+                File(Environment.getExternalStorageDirectory().toString() + "/Texi/Camera/" + System.currentTimeMillis() + ".jpg")
+            return FileProvider.getUriForFile(
+                this,
+                applicationContext.packageName + ".provider",
+                file
+            )
         }
 
     val isValidLegalDetails: Boolean
         get() {
             Log.d("isLegalDetailsSelected", "isLegalDetailsSelected = $isLegalDetailsSelected")
             var isvalid_details = true
-            if (edt_reg_driving_license.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true) || edt_reg_driving_license.text.toString().trim { it <= ' ' }.length == 0) {
+            if (edt_reg_driving_license.text.toString().trim { it <= ' ' }.equals(
+                    "",
+                    ignoreCase = true
+                ) || edt_reg_driving_license.text.toString().trim { it <= ' ' }.length == 0
+            ) {
                 isvalid_details = false
                 if (isLegalDetailsSelected)
-                    Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.enter_driving_license), rlMainView, tvTitle, regularRoboto)
+                    Utility.showMKPanelError(
+                        this@RegisterActivity,
+                        resources.getString(R.string.enter_driving_license),
+                        rlMainView,
+                        tvTitle,
+                        regularRoboto
+                    )
             } else if (edt_reg_driving_license.text.toString().trim { it <= ' ' }.length > 16) {
                 isvalid_details = false
                 if (isLegalDetailsSelected)
-                    Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.driving_license_length), rlMainView, tvTitle, regularRoboto)
-            } else if (edt_reg_license_plate.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true) || edt_reg_license_plate.text.toString().trim { it <= ' ' }.length == 0) {
+                    Utility.showMKPanelError(
+                        this@RegisterActivity,
+                        resources.getString(R.string.driving_license_length),
+                        rlMainView,
+                        tvTitle,
+                        regularRoboto
+                    )
+            } else if (edt_reg_license_plate.text.toString().trim { it <= ' ' }.equals(
+                    "",
+                    ignoreCase = true
+                ) || edt_reg_license_plate.text.toString().trim { it <= ' ' }.length == 0
+            ) {
                 isvalid_details = false
                 if (isLegalDetailsSelected)
-                    Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.enter_license_plate), rlMainView, tvTitle, regularRoboto)
+                    Utility.showMKPanelError(
+                        this@RegisterActivity,
+                        resources.getString(R.string.enter_license_plate),
+                        rlMainView,
+                        tvTitle,
+                        regularRoboto
+                    )
             } else if (!Utility.isValidUserName(edt_reg_license_plate.text.toString())) {
                 isvalid_details = false
                 if (isLegalDetailsSelected)
-                    Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.license_plate_error), rlMainView, tvTitle, regularRoboto)
-            } else if (edt_reg_insuarance.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true) || edt_reg_insuarance.text.toString().trim { it <= ' ' }.length == 0) {
+                    Utility.showMKPanelError(
+                        this@RegisterActivity,
+                        resources.getString(R.string.license_plate_error),
+                        rlMainView,
+                        tvTitle,
+                        regularRoboto
+                    )
+            } else if (edt_reg_insuarance.text.toString().trim { it <= ' ' }.equals(
+                    "",
+                    ignoreCase = true
+                ) || edt_reg_insuarance.text.toString().trim { it <= ' ' }.length == 0
+            ) {
                 isvalid_details = false
                 if (isLegalDetailsSelected)
-                    Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.enter_insuarance), rlMainView, tvTitle, regularRoboto)
+                    Utility.showMKPanelError(
+                        this@RegisterActivity,
+                        resources.getString(R.string.enter_insuarance),
+                        rlMainView,
+                        tvTitle,
+                        regularRoboto
+                    )
             } else if (!Utility.isValidUserName(edt_reg_insuarance.text.toString())) {
                 isvalid_details = false
                 if (isLegalDetailsSelected)
-                    Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.insuarance_error), rlMainView, tvTitle, regularRoboto)
+                    Utility.showMKPanelError(
+                        this@RegisterActivity,
+                        resources.getString(R.string.insuarance_error),
+                        rlMainView,
+                        tvTitle,
+                        regularRoboto
+                    )
             }
             ThrdStepValidation = isvalid_details
             return isvalid_details
@@ -182,15 +224,16 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
 
         userPref = PreferenceManager.getDefaultSharedPreferences(this@RegisterActivity)
 
-        register_step_one = findViewById(R.id.register_step_one) as View
-        register_step_two = findViewById(R.id.register_step_two) as View
-        register_step_three = findViewById(R.id.register_step_three) as View
+        register_step_one = findViewById<View1>(R.id.register_step_one)
+        register_step_two = findViewById<View1>(R.id.register_step_two)
+        register_step_three = findViewById<View1>(R.id.register_step_three)
 
         //Font
         regularRoboto = Typeface.createFromAsset(assets, getString(R.string.font_regular_roboto))
         boldRoboto = Typeface.createFromAsset(assets, getString(R.string.font_bold_roboto))
 
-        regularOpenSans = Typeface.createFromAsset(assets, getString(R.string.font_regular_opensans))
+        regularOpenSans =
+            Typeface.createFromAsset(assets, getString(R.string.font_regular_opensans))
         boldOpenSans = Typeface.createFromAsset(assets, getString(R.string.font_bold_opensans))
 
         layout_header_step_first = findViewById(R.id.layout_header_step_first) as LinearLayout
@@ -203,7 +246,7 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
 
         edt_reg_name = findViewById(R.id.edt_reg_name) as TextInputEditText
         edt_reg_name.typeface = regularOpenSans
-        edt_reg_name.onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
+        edt_reg_name.onFocusChangeListener = View1.OnFocusChangeListener { view, hasFocus ->
             if (!hasFocus) {
                 val strName = edt_reg_name.text.toString()
                 edt_reg_name.setText(WordUtils.capitalize(strName))
@@ -216,9 +259,15 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         edt_reg_email = findViewById(R.id.edt_reg_email) as TextInputEditText
         edt_reg_email.typeface = regularOpenSans
         edt_reg_password = findViewById(R.id.edt_reg_password) as TextInputEditText
-        edt_reg_password.onFocusChangeListener = View.OnFocusChangeListener { view, b ->
+        edt_reg_password.onFocusChangeListener = View1.OnFocusChangeListener { view, b ->
             if (b)
-                Utility.showMKPanelInfo(this@RegisterActivity, resources.getString(R.string.hint_password_msg), rlMainView, tvTitle, regularRoboto)
+                Utility.showMKPanelInfo(
+                    this@RegisterActivity,
+                    resources.getString(R.string.hint_password_msg),
+                    rlMainView,
+                    tvTitle,
+                    regularRoboto
+                )
         }
         edt_reg_password.typeface = regularOpenSans
         edt_reg_confirmpassword = findViewById(R.id.edt_reg_confirmpassword) as TextInputEditText
@@ -237,10 +286,11 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
 
             val now = Calendar.getInstance()
 
-            val dpd = DatePickerDialog.newInstance(this@RegisterActivity,
-                    now.get(Calendar.YEAR),
-                    now.get(Calendar.MONTH),
-                    now.get(Calendar.DAY_OF_MONTH)
+            val dpd = DatePickerDialog.newInstance(
+                this@RegisterActivity,
+                now.get(Calendar.YEAR),
+                now.get(Calendar.MONTH),
+                now.get(Calendar.DAY_OF_MONTH)
             )
             // dpd.setThemeDark(true);
             // dpd.setThemeDark(false);
@@ -267,14 +317,14 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
             }
 
             val mdGender = MaterialDialog.Builder(this@RegisterActivity)
-                    .title(R.string.hint_gender)
-                    .items(R.array.gender)
-                    .itemsCallbackSingleChoice(-1) { dialog, view, which, gender ->
-                        edt_reg_gender.setText(gender)
-                        true
-                    }
-                    .positiveText(R.string.dialog_choose)
-                    .show()
+                .title(R.string.hint_gender)
+                .items(R.array.gender)
+                .itemsCallbackSingleChoice(-1) { dialog, view, which, gender ->
+                    edt_reg_gender.setText(gender)
+                    true
+                }
+                .positiveText(R.string.dialog_choose)
+                .show()
 
             if (edt_reg_gender.text.toString().trim { it <= ' ' }.length > 0)
                 mdGender.selectedIndex = selectGender
@@ -296,7 +346,8 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
             view.clearFocus()
 
             /*Car Type Dialog Start*/
-            CarTypeDialog = Dialog(this@RegisterActivity, android.R.style.Theme_Translucent_NoTitleBar)
+            CarTypeDialog =
+                Dialog(this@RegisterActivity, android.R.style.Theme_Translucent_NoTitleBar)
             CarTypeDialog.setContentView(R.layout.cartype_dialog)
             recycle_car_type = CarTypeDialog.findViewById(R.id.recycle_car_type) as RecyclerView
 
@@ -337,13 +388,14 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         edt_reg_license_exp_date.setOnClickListener { view ->
             view.clearFocus()
             val now = Calendar.getInstance()
-            val dpd = DatePickerDialog.newInstance({ view, year, monthOfYear, dayOfMonth ->
-                val expiryDate = dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year
-                edt_reg_license_exp_date.setText(expiryDate)
-            },
-                    now.get(Calendar.YEAR),
-                    now.get(Calendar.MONTH),
-                    now.get(Calendar.DAY_OF_MONTH)
+            val dpd = DatePickerDialog.newInstance(
+                { view, year, monthOfYear, dayOfMonth ->
+                    val expiryDate = dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year
+                    edt_reg_license_exp_date.setText(expiryDate)
+                },
+                now.get(Calendar.YEAR),
+                now.get(Calendar.MONTH),
+                now.get(Calendar.DAY_OF_MONTH)
             )
             dpd.minDate = now
             val cMax = Calendar.getInstance()
@@ -380,73 +432,73 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
             RegisterStep = RegisterStep - 1
             Log.d("RegisterStep", "RegisterStep = $RegisterStep==$SecoundStepValidation")
             if (RegisterStep == 0) {
-                layout_header_step_first.visibility = View.VISIBLE
-                layout_header_step_secound.visibility = View.GONE
-                layout_header_step_thd.visibility = View.GONE
+                layout_header_step_first.visibility = View1.VISIBLE
+                layout_header_step_secound.visibility = View1.GONE
+                layout_header_step_thd.visibility = View1.GONE
 
-                register_step_one.visibility = View.VISIBLE
-                register_step_two.visibility = View.GONE
-                register_step_three.visibility = View.GONE
-                layout_next.visibility = View.VISIBLE
-                layout_back.visibility = View.GONE
+                register_step_one.visibility = View1.VISIBLE
+                register_step_two.visibility = View1.GONE
+                register_step_three.visibility = View1.GONE
+                layout_next.visibility = View1.VISIBLE
+                layout_back.visibility = View1.GONE
 
 
                 if (SecoundStepValidation!!) {
                     Picasso.with(this@RegisterActivity)
-                            .load(R.drawable.icon_done)
-                            .resize(height, height)
-                            .into(icon_pending_first)
+                        .load(R.drawable.icon_done)
+                        .resize(height, height)
+                        .into(icon_pending_first)
                 } else {
                     Picasso.with(this@RegisterActivity)
-                            .load(R.drawable.icon_pending)
-                            .resize(height, height)
-                            .into(icon_pending_first)
+                        .load(R.drawable.icon_pending)
+                        .resize(height, height)
+                        .into(icon_pending_first)
                 }
                 if (ThrdStepValidation!!) {
                     Picasso.with(this@RegisterActivity)
-                            .load(R.drawable.icon_done)
-                            .resize(height, height)
-                            .into(icon_pending_fir_thd)
+                        .load(R.drawable.icon_done)
+                        .resize(height, height)
+                        .into(icon_pending_fir_thd)
                 } else {
                     Picasso.with(this@RegisterActivity)
-                            .load(R.drawable.icon_pending)
-                            .resize(height, height)
-                            .into(icon_pending_fir_thd)
+                        .load(R.drawable.icon_pending)
+                        .resize(height, height)
+                        .into(icon_pending_fir_thd)
                 }
 
             } else if (RegisterStep == 1) {
-                layout_header_step_first.visibility = View.GONE
-                layout_header_step_secound.visibility = View.VISIBLE
-                layout_header_step_thd.visibility = View.GONE
+                layout_header_step_first.visibility = View1.GONE
+                layout_header_step_secound.visibility = View1.VISIBLE
+                layout_header_step_thd.visibility = View1.GONE
 
-                register_step_one.visibility = View.GONE
-                register_step_two.visibility = View.VISIBLE
-                register_step_three.visibility = View.GONE
-                layout_next.visibility = View.VISIBLE
-                layout_back.visibility = View.VISIBLE
+                register_step_one.visibility = View1.GONE
+                register_step_two.visibility = View1.VISIBLE
+                register_step_three.visibility = View1.GONE
+                layout_next.visibility = View1.VISIBLE
+                layout_back.visibility = View1.VISIBLE
 
                 if (ThrdStepValidation!!) {
                     Picasso.with(this@RegisterActivity)
-                            .load(R.drawable.icon_done)
-                            .resize(height, height)
-                            .into(icon_pending_sec_thd)
+                        .load(R.drawable.icon_done)
+                        .resize(height, height)
+                        .into(icon_pending_sec_thd)
                 } else {
                     Picasso.with(this@RegisterActivity)
-                            .load(R.drawable.icon_pending)
-                            .resize(height, height)
-                            .into(icon_pending_sec_thd)
+                        .load(R.drawable.icon_pending)
+                        .resize(height, height)
+                        .into(icon_pending_sec_thd)
                 }
 
             } else if (RegisterStep == 2) {
-                layout_header_step_first.visibility = View.GONE
-                layout_header_step_secound.visibility = View.GONE
-                layout_header_step_thd.visibility = View.VISIBLE
+                layout_header_step_first.visibility = View1.GONE
+                layout_header_step_secound.visibility = View1.GONE
+                layout_header_step_thd.visibility = View1.VISIBLE
 
-                register_step_one.visibility = View.GONE
-                register_step_two.visibility = View.GONE
-                register_step_three.visibility = View.VISIBLE
-                layout_next.visibility = View.GONE
-                layout_back.visibility = View.VISIBLE
+                register_step_one.visibility = View1.GONE
+                register_step_two.visibility = View1.GONE
+                register_step_three.visibility = View1.VISIBLE
+                layout_next.visibility = View1.GONE
+                layout_back.visibility = View1.VISIBLE
 
             }
 
@@ -463,72 +515,77 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
             Log.d("firstStap", "firstStap = $firstStep==$secoundStep==$RegisterStep")
             if (RegisterStep == 0) {
                 if (firstStep) {
-                    layout_header_step_first.visibility = View.GONE
-                    layout_header_step_secound.visibility = View.VISIBLE
-                    layout_header_step_thd.visibility = View.GONE
+                    layout_header_step_first.visibility = View1.GONE
+                    layout_header_step_secound.visibility = View1.VISIBLE
+                    layout_header_step_thd.visibility = View1.GONE
 
-                    register_step_one.visibility = View.GONE
-                    register_step_two.visibility = View.VISIBLE
-                    register_step_three.visibility = View.GONE
-                    layout_next.visibility = View.VISIBLE
-                    layout_back.visibility = View.VISIBLE
+                    register_step_one.visibility = View1.GONE
+                    register_step_two.visibility = View1.VISIBLE
+                    register_step_three.visibility = View1.GONE
+                    layout_next.visibility = View1.VISIBLE
+                    layout_back.visibility = View1.VISIBLE
                     RegisterStep = RegisterStep + 1
                     if (secoundStep) {
                         Picasso.with(this@RegisterActivity)
-                                .load(R.drawable.icon_done)
-                                .into(icon_pending_first)
+                            .load(R.drawable.icon_done)
+                            .into(icon_pending_first)
                     } else {
                         Picasso.with(this@RegisterActivity)
-                                .load(R.drawable.icon_pending)
-                                .into(icon_pending_first)
+                            .load(R.drawable.icon_pending)
+                            .into(icon_pending_first)
                     }
                     if (thdStep) {
                         Picasso.with(this@RegisterActivity)
-                                .load(R.drawable.icon_done)
-                                .into(icon_pending_fir_thd)
+                            .load(R.drawable.icon_done)
+                            .into(icon_pending_fir_thd)
                     } else {
                         Picasso.with(this@RegisterActivity)
-                                .load(R.drawable.icon_pending)
-                                .into(icon_pending_fir_thd)
+                            .load(R.drawable.icon_pending)
+                            .into(icon_pending_fir_thd)
                     }
                 }
             } else if (RegisterStep == 1) {
                 if (firstStep && secoundStep) {
                     RegisterStep = RegisterStep + 1
-                    layout_header_step_first.visibility = View.GONE
-                    layout_header_step_secound.visibility = View.GONE
-                    layout_header_step_thd.visibility = View.VISIBLE
+                    layout_header_step_first.visibility = View1.GONE
+                    layout_header_step_secound.visibility = View1.GONE
+                    layout_header_step_thd.visibility = View1.VISIBLE
 
-                    register_step_one.visibility = View.GONE
-                    register_step_two.visibility = View.GONE
-                    register_step_three.visibility = View.VISIBLE
+                    register_step_one.visibility = View1.GONE
+                    register_step_two.visibility = View1.GONE
+                    register_step_three.visibility = View1.VISIBLE
 
-                    layout_back.visibility = View.VISIBLE
-                    layout_next.visibility = View.GONE
+                    layout_back.visibility = View1.VISIBLE
+                    layout_next.visibility = View1.GONE
                     if (thdStep) {
                         Picasso.with(this@RegisterActivity)
-                                .load(R.drawable.icon_done)
-                                .into(icon_pending_fir_thd)
+                            .load(R.drawable.icon_done)
+                            .into(icon_pending_fir_thd)
                     } else {
                         Picasso.with(this@RegisterActivity)
-                                .load(R.drawable.icon_pending)
-                                .into(icon_pending_fir_thd)
+                            .load(R.drawable.icon_pending)
+                            .into(icon_pending_fir_thd)
                     }
                     isLegalDetailsSelected = true
                 }
             }
         }
 
-        iv_user_photo = findViewById(R.id.iv_user_photo) as ImageView
+
         iv_user_photo.setOnClickListener {
-            Cameradialog = Dialog(this@RegisterActivity, android.R.style.Theme_Translucent_NoTitleBar)
+            Cameradialog =
+                Dialog(this@RegisterActivity, android.R.style.Theme_Translucent_NoTitleBar)
             Cameradialog.setContentView(R.layout.custom_dialog)
 
             val tv_gallery = Cameradialog.findViewById(R.id.tv_gallery) as TextView
             tv_gallery.typeface = boldRoboto
             val galRelLayout = Cameradialog.findViewById(R.id.gallery_layout) as RelativeLayout
             galRelLayout.setOnClickListener {
-                if (Utility.checkAndRequestPermissionsGallery(this@RegisterActivity, REQUEST_GALLERY_PERMISSION)) {
+                if (Utility.checkAndRequestPermissionsGallery(
+                        this@RegisterActivity,
+                        REQUEST_GALLERY_PERMISSION
+                    )
+                ) {
                     launchGallery()
                 }
             }
@@ -537,13 +594,19 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
             tv_camera.typeface = boldRoboto
             val cameraRelLayout = Cameradialog.findViewById(R.id.camera_layout) as RelativeLayout
             cameraRelLayout.setOnClickListener {
-                if (Utility.checkAndRequestPermissions(this@RegisterActivity, REQUEST_ID_MULTIPLE_PERMISSIONS)) {
+                if (Utility.checkAndRequestPermissions(
+                        this@RegisterActivity,
+                        REQUEST_ID_MULTIPLE_PERMISSIONS
+                    )
+                ) {
                     // carry on the normal flow, as the case of  permissions  granted.
                     requestForCameraPermission()
                 }
+
             }
 
-            val dialogMainLayout = Cameradialog.findViewById(R.id.dialog_main_layout) as RelativeLayout
+            val dialogMainLayout =
+                Cameradialog.findViewById(R.id.dialog_main_layout) as RelativeLayout
             dialogMainLayout.setOnClickListener { Cameradialog.dismiss() }
 
             val CancelImage = Cameradialog.findViewById(R.id.img_cancel) as ImageView
@@ -606,14 +669,23 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
 
     fun requestForCameraPermission() {
         val permission = android.Manifest.permission.CAMERA
-        if (ContextCompat.checkSelfPermission(this@RegisterActivity, permission) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this@RegisterActivity, permission)) {
+        if (ContextCompat.checkSelfPermission(
+                this@RegisterActivity,
+                permission
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this@RegisterActivity,
+                    permission
+                )
+            ) {
                 requestForPermission(permission)
             } else {
                 requestForPermission(permission)
             }
         } else {
             launchCamera()
+            Cameradialog.dismiss()
         }
     }
 
@@ -627,12 +699,18 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
             intent.putExtra(MediaStore.EXTRA_OUTPUT, mCapturedImageURI)
             startActivityForResult(intent, 1)
         } else {
-            AlertDialog.Builder(this@RegisterActivity).setMessage("External Storeage (SD Card) is required.\n\nCurrent state: $storageState").setCancelable(true).create().show()
+            AlertDialog.Builder(this@RegisterActivity)
+                .setMessage("External Storeage (SD Card) is required.\n\nCurrent state: $storageState")
+                .setCancelable(true).create().show()
         }
     }
 
     private fun requestForPermission(permission: String) {
-        ActivityCompat.requestPermissions(this@RegisterActivity, arrayOf(permission), REQUEST_CAMERA_PERMISSION)
+        ActivityCompat.requestPermissions(
+            this@RegisterActivity,
+            arrayOf(permission),
+            REQUEST_CAMERA_PERMISSION
+        )
     }
 
     fun PersonalDetailValidation(): Boolean {
@@ -640,79 +718,257 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         var isvalid_details = true
         if (isSelectPhoto == 0) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.please_select_image), rlMainView, tvTitle, regularRoboto)
-        } else if (edt_reg_name.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true) || edt_reg_name.text.toString().trim { it <= ' ' }.length == 0) {
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.please_select_image),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
+        } else if (edt_reg_name.text.toString().trim { it <= ' ' }.equals(
+                "",
+                ignoreCase = true
+            ) || edt_reg_name.text.toString().trim { it <= ' ' }.length == 0
+        ) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.enter_name), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.enter_name),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         } else if (edt_reg_name.text.toString().length != 0 && edt_reg_name.text.toString().length < 4) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.minimum_name_charactor), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.minimum_name_charactor),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         } else if (edt_reg_name.text.toString().length != 0 && edt_reg_name.text.toString().length > 30) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.maximum_name_charactor), rlMainView, tvTitle, regularRoboto)
-        } else if (edt_reg_username.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true) || edt_reg_username.text.toString().trim { it <= ' ' }.length == 0) {
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.maximum_name_charactor),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
+        } else if (edt_reg_username.text.toString().trim { it <= ' ' }.equals(
+                "",
+                ignoreCase = true
+            ) || edt_reg_username.text.toString().trim { it <= ' ' }.length == 0
+        ) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.please_enter_username), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.please_enter_username),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         } else if (edt_reg_username.text.toString().length != 0 && edt_reg_username.text.toString().length < 4) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.minimum_user_charactor), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.minimum_user_charactor),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         } else if (edt_reg_username.text.toString().length != 0 && edt_reg_username.text.toString().length > 30) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.maximum_user_charactor), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.maximum_user_charactor),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         } else if (!Utility.isValidUserName(edt_reg_username.text.toString())) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.username_error), rlMainView, tvTitle, regularRoboto)
-        } else if (edt_reg_mobile.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true) || edt_reg_mobile.text.toString().trim { it <= ' ' }.length == 0) {
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.username_error),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
+        } else if (edt_reg_mobile.text.toString().trim { it <= ' ' }.equals(
+                "",
+                ignoreCase = true
+            ) || edt_reg_mobile.text.toString().trim { it <= ' ' }.length == 0
+        ) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.please_enter_mobileno), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.please_enter_mobileno),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         } else if (edt_reg_mobile.text.toString().trim { it <= ' ' }.length < 10) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.min_mobile_number), rlMainView, tvTitle, regularRoboto)
-        } else if (edt_reg_email.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true) || edt_reg_email.text.toString().trim { it <= ' ' }.length == 0) {
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.min_mobile_number),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
+        } else if (edt_reg_email.text.toString().trim { it <= ' ' }.equals(
+                "",
+                ignoreCase = true
+            ) || edt_reg_email.text.toString().trim { it <= ' ' }.length == 0
+        ) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.please_enter_email), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.please_enter_email),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         } else if (!Utility.isValidEmail(edt_reg_email.text.toString())) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.please_enter_valid_email), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.please_enter_valid_email),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         } else if (edt_reg_password.text.toString().trim { it <= ' ' }.length == 0) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.please_enter_password), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.please_enter_password),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         } else if (!edt_reg_password.text.toString().trim { it <= ' ' }.matches("^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$".toRegex())) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.hint_password_msg), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.hint_password_msg),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         } else if (edt_reg_password.text.toString().trim { it <= ' ' }.length < 6 || edt_reg_password.text.toString().trim { it <= ' ' }.length > 32) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.password_length), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.password_length),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         } else if (edt_reg_password.text.toString().trim { it <= ' ' }.length > 32) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.large_password), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.large_password),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         } else if (edt_reg_confirmpassword.text.toString().trim { it <= ' ' }.length == 0) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.please_enter_confirm_password), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.please_enter_confirm_password),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         } else if (!edt_reg_confirmpassword.text.toString().trim { it <= ' ' }.matches("^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$".toRegex())) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.hint_password_msg), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.hint_password_msg),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         } else if (edt_reg_confirmpassword.text.toString().trim { it <= ' ' }.length < 6 || edt_reg_confirmpassword.text.toString().trim { it <= ' ' }.length > 32) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.password_length), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.password_length),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         } else if (edt_reg_confirmpassword.text.toString().trim { it <= ' ' }.length > 32) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.large_password), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.large_password),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         } else if (edt_reg_confirmpassword.text.toString().trim { it <= ' ' } != edt_reg_password.text.toString().trim { it <= ' ' }) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.password_does_not_match), rlMainView, tvTitle, regularRoboto)
-        } else if (edt_reg_dob.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true) || edt_reg_dob.text.toString().trim { it <= ' ' }.length == 0) {
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.password_does_not_match),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
+        } else if (edt_reg_dob.text.toString().trim { it <= ' ' }.equals(
+                "",
+                ignoreCase = true
+            ) || edt_reg_dob.text.toString().trim { it <= ' ' }.length == 0
+        ) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.enter_dob), rlMainView, tvTitle, regularRoboto)
-        } else if (edt_reg_gender.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true) || edt_reg_gender.text.toString().trim { it <= ' ' }.length == 0) {
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.enter_dob),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
+        } else if (edt_reg_gender.text.toString().trim { it <= ' ' }.equals(
+                "",
+                ignoreCase = true
+            ) || edt_reg_gender.text.toString().trim { it <= ' ' }.length == 0
+        ) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.select_gender), rlMainView, tvTitle, regularRoboto)
-        } else if (edt_reg_address.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true) || edt_reg_address.text.toString().trim { it <= ' ' }.length == 0) {
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.select_gender),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
+        } else if (edt_reg_address.text.toString().trim { it <= ' ' }.equals(
+                "",
+                ignoreCase = true
+            ) || edt_reg_address.text.toString().trim { it <= ' ' }.length == 0
+        ) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.please_enter_address), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.please_enter_address),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         } else if (edt_reg_address.text.toString().trim { it <= ' ' }.matches("^[0-9]*$".toRegex())) {
             isvalid_details = false
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.please_enter_address_number), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.please_enter_address_number),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         }//        else if(isSelectPhoto==0){
         //            isvalid_details=false;
         //            Utility.showMKPanelError(RegisterActivity.this, getResources().getString(R.string.please_select_image),rlMainView,tvTitle,regularRoboto);
@@ -723,40 +979,108 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
     fun VehicleDetailValidation(): Boolean {
 
         var isvalid_details = true
-        if (edt_reg_carmake.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true) || edt_reg_carmake.text.toString().trim { it <= ' ' }.length == 0) {
+        if (edt_reg_carmake.text.toString().trim { it <= ' ' }.equals(
+                "",
+                ignoreCase = true
+            ) || edt_reg_carmake.text.toString().trim { it <= ' ' }.length == 0
+        ) {
             //Toast.makeText(RegisterActivity.this,"Error",Toast.LENGTH_LONG).show();
             isvalid_details = false
             if (isVehicleDetailsSelected)
-                Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.enter_carmake), rlMainView, tvTitle, regularRoboto)
+                Utility.showMKPanelError(
+                    this@RegisterActivity,
+                    resources.getString(R.string.enter_carmake),
+                    rlMainView,
+                    tvTitle,
+                    regularRoboto
+                )
         } else if (edt_reg_carmake.text.toString().trim { it <= ' ' }.matches("^[0-9]*$".toRegex())) {
             isvalid_details = false
             if (isVehicleDetailsSelected)
-                Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.please_enter_carmake_number), rlMainView, tvTitle, regularRoboto)
-        } else if (edt_reg_camodel.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true) || edt_reg_camodel.text.toString().trim { it <= ' ' }.length == 0) {
+                Utility.showMKPanelError(
+                    this@RegisterActivity,
+                    resources.getString(R.string.please_enter_carmake_number),
+                    rlMainView,
+                    tvTitle,
+                    regularRoboto
+                )
+        } else if (edt_reg_camodel.text.toString().trim { it <= ' ' }.equals(
+                "",
+                ignoreCase = true
+            ) || edt_reg_camodel.text.toString().trim { it <= ' ' }.length == 0
+        ) {
             isvalid_details = false
             if (isVehicleDetailsSelected)
-                Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.enter_carmodel), rlMainView, tvTitle, regularRoboto)
-        } else if (edt_reg_cartype.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true) || edt_reg_cartype.text.toString().trim { it <= ' ' }.length == 0) {
+                Utility.showMKPanelError(
+                    this@RegisterActivity,
+                    resources.getString(R.string.enter_carmodel),
+                    rlMainView,
+                    tvTitle,
+                    regularRoboto
+                )
+        } else if (edt_reg_cartype.text.toString().trim { it <= ' ' }.equals(
+                "",
+                ignoreCase = true
+            ) || edt_reg_cartype.text.toString().trim { it <= ' ' }.length == 0
+        ) {
             isvalid_details = false
             if (isVehicleDetailsSelected)
-                Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.enter_cartype), rlMainView, tvTitle, regularRoboto)
-        } else if (edt_reg_carnumber.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true) || edt_reg_carnumber.text.toString().trim { it <= ' ' }.length == 0) {
+                Utility.showMKPanelError(
+                    this@RegisterActivity,
+                    resources.getString(R.string.enter_cartype),
+                    rlMainView,
+                    tvTitle,
+                    regularRoboto
+                )
+        } else if (edt_reg_carnumber.text.toString().trim { it <= ' ' }.equals(
+                "",
+                ignoreCase = true
+            ) || edt_reg_carnumber.text.toString().trim { it <= ' ' }.length == 0
+        ) {
             isvalid_details = false
             if (isVehicleDetailsSelected)
-                Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.enter_carnumber), rlMainView, tvTitle, regularRoboto)
+                Utility.showMKPanelError(
+                    this@RegisterActivity,
+                    resources.getString(R.string.enter_carnumber),
+                    rlMainView,
+                    tvTitle,
+                    regularRoboto
+                )
         } else if (!Utility.isValidUserName(edt_reg_carnumber.text.toString())) {
             isvalid_details = false
             if (isVehicleDetailsSelected)
-                Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.carnumber_error), rlMainView, tvTitle, regularRoboto)
-        } else if (edt_reg_seating_capacity.text.toString().trim { it <= ' ' }.equals("", ignoreCase = true) || edt_reg_seating_capacity.text.toString().trim { it <= ' ' }.length == 0) {
+                Utility.showMKPanelError(
+                    this@RegisterActivity,
+                    resources.getString(R.string.carnumber_error),
+                    rlMainView,
+                    tvTitle,
+                    regularRoboto
+                )
+        } else if (edt_reg_seating_capacity.text.toString().trim { it <= ' ' }.equals(
+                "",
+                ignoreCase = true
+            ) || edt_reg_seating_capacity.text.toString().trim { it <= ' ' }.length == 0
+        ) {
             isvalid_details = false
             if (isVehicleDetailsSelected)
-                Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.enter_seating_capacity), rlMainView, tvTitle, regularRoboto)
+                Utility.showMKPanelError(
+                    this@RegisterActivity,
+                    resources.getString(R.string.enter_seating_capacity),
+                    rlMainView,
+                    tvTitle,
+                    regularRoboto
+                )
         } else if (!edt_reg_seating_capacity.text.toString().trim { it <= ' ' }.matches("^[0-9]*$".toRegex())) {
             isvalid_details = false
             if (isVehicleDetailsSelected)
 
-                Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.seating_capacity_error), rlMainView, tvTitle, regularRoboto)
+                Utility.showMKPanelError(
+                    this@RegisterActivity,
+                    resources.getString(R.string.seating_capacity_error),
+                    rlMainView,
+                    tvTitle,
+                    regularRoboto
+                )
         }
         SecoundStepValidation = isvalid_details
         return isvalid_details
@@ -770,7 +1094,13 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         minAdultAge.add(Calendar.YEAR, -18)
         if (minAdultAge.before(userAge)) {
             edt_reg_dob.setText("")
-            Utility.showMKPanelError(this@RegisterActivity, resources.getString(R.string.dob_error), rlMainView, tvTitle, regularRoboto)
+            Utility.showMKPanelError(
+                this@RegisterActivity,
+                resources.getString(R.string.dob_error),
+                rlMainView,
+                tvTitle,
+                regularRoboto
+            )
         } else {
             edt_reg_dob.setText(date)
         }
@@ -780,22 +1110,23 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         try {
 
             val file = File(imagePath!!.path!!)
-            val exif = ExifInterface(file.path)
-            val orientString = exif.getAttribute(ExifInterface.TAG_ORIENTATION)
-            val orientation = if (orientString != null) Integer.parseInt(orientString) else ExifInterface.ORIENTATION_NORMAL
-            var rotationAngle = 0
-            if (orientation == ExifInterface.ORIENTATION_ROTATE_90) rotationAngle = 90
-            if (orientation == ExifInterface.ORIENTATION_ROTATE_180) rotationAngle = 180
-            if (orientation == ExifInterface.ORIENTATION_ROTATE_270) rotationAngle = 270
+//            val exif = ExifInterface(file.path)
+//            val orientString = exif.getAttribute(ExifInterface.TAG_ORIENTATION)
+//            val orientation = if (orientString != null) Integer.parseInt(orientString) else ExifInterface.ORIENTATION_NORMAL
+//            var rotationAngle = 90
+//            if (orientation == ExifInterface.ORIENTATION_ROTATE_90) rotationAngle = 90
+//            if (orientation == ExifInterface.ORIENTATION_ROTATE_180) rotationAngle = 180
+//            if (orientation == ExifInterface.ORIENTATION_ROTATE_270) rotationAngle = 270
 
             val bitmap = resizeBitMapImage(imagePath.path, 200, 200)
-            val RotateBitmap = RotateBitmap(bitmap, rotationAngle.toFloat())
+//            val RotateBitmap = RotateBitmap(bitmap, rotationAngle.toFloat())
             val sdf = SimpleDateFormat("yyyyMMdd_HHmmss")
             val currentDateandTime = sdf.format(Date())
-            val myFinalImagePath = saveToInternalSorage(RotateBitmap, currentDateandTime)
+            val myFinalImagePath = saveToInternalSorage(bitmap!!, currentDateandTime)
             val fileimg = File(myFinalImagePath)
             photoFile = fileimg
-            Picasso.with(this@RegisterActivity).load(fileimg).resize(250, 250).centerCrop().transform(CircleTransformation(this)).into(iv_user_photo)
+            Picasso.with(this@RegisterActivity).load(fileimg).resize(250, 250).centerCrop()
+                .transform(CircleTransformation(this)).into(iv_user_photo)
             isSelectPhoto = 1
             Cameradialog.cancel()
 
@@ -842,21 +1173,59 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         if (requestCode == 1 || requestCode == 2 || requestCode == 100) {
-            if (resultCode == Activity.RESULT_OK) {
+            if (resultCode != Activity.RESULT_CANCELED) {
                 if (requestCode == 1) {
-                    if (mCapturedImageURI != null) {
-                        setImage(mCapturedImageURI)//.getPath().toString());
+                    if (data?.extras?.get("data") != null) {
+                        isSelectPhoto = 1
+                        val thumbnail = data?.extras?.get("data")?.let {
+                            it as Bitmap
+                        }
+                        iv_user_photo.setImageBitmap(thumbnail)
+                        setImage(imageUri)//.getPath().toString())
+
                     } else {
-                        setImage(mCapturedImageURI)//.getPath().toString());
+                        val uri: Uri = Uri.fromFile(file);
+                        isSelectPhoto = 1
+                        photoFile=File(uri.path)
+                        try {
+                            val bytes = ByteArrayOutputStream();
+                            val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
+                            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
+                            val exif = ExifInterface(file.path)
+            val orientString = exif.getAttribute(ExifInterface.TAG_ORIENTATION)
+            val orientation = if (orientString != null) Integer.parseInt(orientString) else ExifInterface.ORIENTATION_NORMAL
+            var rotationAngle = 0
+            if (orientation == ExifInterface.ORIENTATION_ROTATE_90) rotationAngle = 90
+            if (orientation == ExifInterface.ORIENTATION_ROTATE_180) rotationAngle = 180
+            if (orientation == ExifInterface.ORIENTATION_ROTATE_270) rotationAngle = 270
+                            val RotateBitmap = RotateBitmap(bitmap, rotationAngle.toFloat())
+                            val bitmap1 = resizeBitMapImage(file.path, 200, 200)
+                            iv_user_photo.setImageBitmap(RotateBitmap)
+//                            saveImage(bitmap!!)
+                        } catch (e: FileNotFoundException) {
+
+                            e.printStackTrace();
+                        }
+
                     }
                 } else if (requestCode == 2) {
                     val selImagePath = getPath(data?.data)
                     mCapturedImageURI = Uri.parse(selImagePath)
+
                     setImage(mCapturedImageURI)
                 }
 
-                if (!isFinishing && rlMainView.visibility == View.VISIBLE) {
-                    val slideUp = TranslateAnimation(Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, 0f, Animation.RELATIVE_TO_SELF, -100f)
+                if (!isFinishing && rlMainView.visibility == View1.VISIBLE) {
+                    val slideUp = TranslateAnimation(
+                        Animation.RELATIVE_TO_SELF,
+                        0f,
+                        Animation.RELATIVE_TO_SELF,
+                        0f,
+                        Animation.RELATIVE_TO_SELF,
+                        0f,
+                        Animation.RELATIVE_TO_SELF,
+                        -100f
+                    )
                     slideUp.duration = 100
                     slideUp.fillAfter = true
                     rlMainView.startAnimation(slideUp)
@@ -867,7 +1236,7 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
                         override fun onAnimationRepeat(animation: Animation) {}
 
                         override fun onAnimationEnd(animation: Animation) {
-                            rlMainView.visibility = View.GONE
+                            rlMainView.visibility = View1.GONE
                         }
                     })
 
@@ -876,162 +1245,226 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
         }
     }
 
+    fun saveImage(myBitmap: Bitmap): String {
+//
+
+        val bitmap = resizeBitMapImage(imageUri.path, 200, 200)
+//
+
+        val bytes = ByteArrayOutputStream();
+        myBitmap.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
+        val wallpaperDirectory = file
+        if (!wallpaperDirectory.exists()) {  // have the object build the directory structure, if needed.
+            wallpaperDirectory.mkdirs();
+        }
+
+        try {
+            val f =
+                File(wallpaperDirectory, Calendar.getInstance().timeInMillis.toString() + ".jpg");
+            f.createNewFile()
+            val fo = FileOutputStream(file);
+            fo.write(bytes.toByteArray());
+            MediaScannerConnection.scanFile(
+                this,
+                arrayOf(f.path),
+                arrayOf("image/jpeg"), null
+            );
+            fo.close();
+            Log.d("TAG", "File Saved::---&gt;" + f.absolutePath);
+
+            return f.absolutePath;
+        } catch (e1: IOException) {
+            e1.printStackTrace();
+        }
+        return "";
+    }
+
     fun postSignup() {
         Log.d("CarTypeId", "CarTypeId = $CarTypeId")
         Ion.with(this@RegisterActivity)
-                .load(Url.driver_sign_up)
-                .setMultipartParameter("name", edt_reg_name.text.toString().trim { it <= ' ' })
-                .setMultipartParameter("username", edt_reg_username.text.toString().trim { it <= ' ' })
-                .setMultipartParameter("phone", edt_reg_mobile.text.toString().trim { it <= ' ' })
-                .setMultipartParameter("email", edt_reg_email.text.toString().trim { it <= ' ' })
-                .setMultipartParameter("password", edt_reg_password.text.toString().trim { it <= ' ' })
-                .setMultipartParameter("dob", edt_reg_dob.text.toString().trim { it <= ' ' })
-                .setMultipartParameter("gender", edt_reg_gender.text.toString().trim { it <= ' ' })
-                .setMultipartParameter("address", edt_reg_address.text.toString().trim { it <= ' ' })
-                .setMultipartParameter("Car_Make", edt_reg_carmake.text.toString().trim { it <= ' ' })
-                .setMultipartParameter("Car_Model", edt_reg_camodel.text.toString().trim { it <= ' ' })
-                .setMultipartParameter("car_type", CarTypeId)
-                .setMultipartParameter("car_no", edt_reg_carnumber.text.toString().trim { it <= ' ' })
-                .setMultipartParameter("Seating_Capacity", edt_reg_seating_capacity.text.toString().trim { it <= ' ' })
-                .setMultipartParameter("license_no", edt_reg_driving_license.text.toString().trim { it <= ' ' })
-                .setMultipartParameter("Lieasence_Expiry_Date", edt_reg_license_exp_date.text.toString().trim { it <= ' ' })
-                .setMultipartParameter("license_plate", edt_reg_license_plate.text.toString().trim { it <= ' ' })
-                .setMultipartParameter("Insurance", edt_reg_insuarance.text.toString().trim { it <= ' ' })
-                .setMultipartParameter("isdevice", "1")
-                .setMultipartFile("image", photoFile)
-                .asJsonObject()
-                .setCallback(FutureCallback { e, result ->
-                    // do stuff with the result or error
-                    println("Register Response >>>$result")
-                    println("Register Response >>>" + e!!)
+            .load(Url.driver_sign_up)
+            .setMultipartParameter("name", edt_reg_name.text.toString().trim { it <= ' ' })
+            .setMultipartParameter("username", edt_reg_username.text.toString().trim { it <= ' ' })
+            .setMultipartParameter("phone", edt_reg_mobile.text.toString().trim { it <= ' ' })
+            .setMultipartParameter("email", edt_reg_email.text.toString().trim { it <= ' ' })
+            .setMultipartParameter("password", edt_reg_password.text.toString().trim { it <= ' ' })
+            .setMultipartParameter("dob", edt_reg_dob.text.toString().trim { it <= ' ' })
+            .setMultipartParameter("gender", edt_reg_gender.text.toString().trim { it <= ' ' })
+            .setMultipartParameter("address", edt_reg_address.text.toString().trim { it <= ' ' })
+            .setMultipartParameter("Car_Make", edt_reg_carmake.text.toString().trim { it <= ' ' })
+            .setMultipartParameter("Car_Model", edt_reg_camodel.text.toString().trim { it <= ' ' })
+            .setMultipartParameter("car_type", CarTypeId)
+            .setMultipartParameter("car_no", edt_reg_carnumber.text.toString().trim { it <= ' ' })
+            .setMultipartParameter(
+                "Seating_Capacity",
+                edt_reg_seating_capacity.text.toString().trim { it <= ' ' })
+            .setMultipartParameter(
+                "license_no",
+                edt_reg_driving_license.text.toString().trim { it <= ' ' })
+            .setMultipartParameter(
+                "Lieasence_Expiry_Date",
+                edt_reg_license_exp_date.text.toString().trim { it <= ' ' })
+            .setMultipartParameter(
+                "license_plate",
+                edt_reg_license_plate.text.toString().trim { it <= ' ' })
+            .setMultipartParameter(
+                "Insurance",
+                edt_reg_insuarance.text.toString().trim { it <= ' ' })
+            .setMultipartParameter("isdevice", "1")
+            .setMultipartFile("image", photoFile)
+            .asJsonObject()
+            .setCallback(FutureCallback { e, result ->
+                // do stuff with the result or error
+                println("Register Response >>>$result")
 
-                    loader.loaderObject().stop()
-                    loader.loaderDismiss()
 
-                    if (e != null) {
-                        Toast.makeText(this@RegisterActivity, "Register Error$e", Toast.LENGTH_LONG).show()
-                        return@FutureCallback
-                    }
 
-                    try {
+                loader.loaderObject().stop()
+                loader.loaderDismiss()
 
-                        val jsonObject = JSONObject(result.toString())
-                        if (jsonObject.has("status") && jsonObject.getString("status") == "success") {
+                if (e != null) {
+                    println("Register Response >>>" + e)
+                    Toast.makeText(this@RegisterActivity, "Register Error$e", Toast.LENGTH_LONG)
+                        .show()
+                    return@FutureCallback
+                }
 
-                            /*set Start Currency*/
+                try {
 
-                            val currencyArray = JSONArray(jsonObject.getString("country_detail"))
-                            for (ci in 0 until currencyArray.length()) {
-                                val startEndTimeObj = currencyArray.getJSONObject(ci)
-                                Common.Currency = startEndTimeObj.getString("currency")
-                                Common.Country = startEndTimeObj.getString("country")
+                    val jsonObject = JSONObject(result.toString())
+                    if (jsonObject.has("status") && jsonObject.getString("status") == "success") {
 
-                                val currency = userPref.edit()
-                                currency.putString("currency", startEndTimeObj.getString("currency"))
-                                currency.commit()
-                            }
+                        /*set Start Currency*/
 
-                            val jsonArray = jsonObject.getJSONArray("Driver_detail")
-                            val jsonObjDriver = jsonArray.getJSONObject(0)
-                            println("Driver Response >>>$jsonObjDriver")
+                        val currencyArray = JSONArray(jsonObject.getString("country_detail"))
+                        for (ci in 0 until currencyArray.length()) {
+                            val startEndTimeObj = currencyArray.getJSONObject(ci)
+                            Common.Currency = startEndTimeObj.getString("currency")
+                            Common.Country = startEndTimeObj.getString("country")
 
-                            val id = userPref.edit()
-                            id.putString("id", jsonObjDriver.getString("id"))
-                            id.commit()
-
-                            val name = userPref.edit()
-                            name.putString("name", jsonObjDriver.getString("name"))
-                            name.commit()
-
-                            val user_name = userPref.edit()
-                            user_name.putString("user_name", jsonObjDriver.getString("user_name"))
-                            user_name.commit()
-
-                            val email = userPref.edit()
-                            email.putString("email", jsonObjDriver.getString("email"))
-                            email.commit()
-
-                            val password = userPref.edit()
-                            password.putString("password", edt_reg_password.text.toString().trim { it <= ' ' })
-                            password.commit()
-
-                            val gender = userPref.edit()
-                            gender.putString("gender", jsonObjDriver.getString("gender"))
-                            gender.commit()
-
-                            val phone = userPref.edit()
-                            phone.putString("phone", jsonObjDriver.getString("phone"))
-                            phone.commit()
-
-                            val dob = userPref.edit()
-                            dob.putString("dob", jsonObjDriver.getString("dob"))
-                            dob.commit()
-
-                            val address = userPref.edit()
-                            address.putString("address", jsonObjDriver.getString("address"))
-                            address.commit()
-
-                            val license_no = userPref.edit()
-                            license_no.putString("license_no", jsonObjDriver.getString("license_no"))
-                            license_no.commit()
-
-                            val Lieasence_Expiry_Date = userPref.edit()
-                            Lieasence_Expiry_Date.putString("Lieasence_Expiry_Date", jsonObjDriver.getString("Lieasence_Expiry_Date"))
-                            Lieasence_Expiry_Date.commit()
-
-                            val license_plate = userPref.edit()
-                            license_plate.putString("license_plate", jsonObjDriver.getString("license_plate"))
-                            license_plate.commit()
-
-                            val Insurance = userPref.edit()
-                            Insurance.putString("Insurance", jsonObjDriver.getString("Insurance"))
-                            Insurance.commit()
-
-                            val Car_Model = userPref.edit()
-                            Car_Model.putString("Car_Model", jsonObjDriver.getString("Car_Model"))
-                            Car_Model.commit()
-
-                            val Car_Make = userPref.edit()
-                            Car_Make.putString("Car_Make", jsonObjDriver.getString("Car_Make"))
-                            Car_Make.commit()
-
-                            val car_type = userPref.edit()
-                            car_type.putString("car_type", jsonObjDriver.getString("car_type"))
-                            car_type.commit()
-
-                            val car_no = userPref.edit()
-                            car_no.putString("car_no", jsonObjDriver.getString("car_no"))
-                            car_no.commit()
-
-                            val Seating_Capacity = userPref.edit()
-                            Seating_Capacity.putString("Seating_Capacity", jsonObjDriver.getString("Seating_Capacity"))
-                            Seating_Capacity.commit()
-
-                            val image = userPref.edit()
-                            image.putString("image", jsonObjDriver.getString("image"))
-                            image.commit()
-
-                            val status = userPref.edit()
-                            status.putString("status", jsonObjDriver.getString("status"))
-                            status.commit()
-
-                            val isLogin = userPref.edit()
-                            isLogin.putBoolean("is_login", true)
-                            isLogin.commit()
-
-                            val intent = Intent(this@RegisterActivity, DriverTripActivity::class.java)
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                            startActivity(intent)
-                            finish()
-
-                        } else {
-                            Utility.showMKPanelErrorServer(this@RegisterActivity, jsonObject.getString("error code").toString(), rlMainView, tvTitle, regularRoboto)
+                            val currency = userPref.edit()
+                            currency.putString("currency", startEndTimeObj.getString("currency"))
+                            currency.commit()
                         }
-                    } catch (e1: Exception) {
-                        e1.printStackTrace()
+
+                        val jsonArray = jsonObject.getJSONArray("Driver_detail")
+                        val jsonObjDriver = jsonArray.getJSONObject(0)
+                        println("Driver Response >>>$jsonObjDriver")
+
+                        val id = userPref.edit()
+                        id.putString("id", jsonObjDriver.getString("id"))
+                        id.commit()
+
+                        val name = userPref.edit()
+                        name.putString("name", jsonObjDriver.getString("name"))
+                        name.commit()
+
+                        val user_name = userPref.edit()
+                        user_name.putString("user_name", jsonObjDriver.getString("user_name"))
+                        user_name.commit()
+
+                        val email = userPref.edit()
+                        email.putString("email", jsonObjDriver.getString("email"))
+                        email.commit()
+
+                        val password = userPref.edit()
+                        password.putString(
+                            "password",
+                            edt_reg_password.text.toString().trim { it <= ' ' })
+                        password.commit()
+
+                        val gender = userPref.edit()
+                        gender.putString("gender", jsonObjDriver.getString("gender"))
+                        gender.commit()
+
+                        val phone = userPref.edit()
+                        phone.putString("phone", jsonObjDriver.getString("phone"))
+                        phone.commit()
+
+                        val dob = userPref.edit()
+                        dob.putString("dob", jsonObjDriver.getString("dob"))
+                        dob.commit()
+
+                        val address = userPref.edit()
+                        address.putString("address", jsonObjDriver.getString("address"))
+                        address.commit()
+
+                        val license_no = userPref.edit()
+                        license_no.putString("license_no", jsonObjDriver.getString("license_no"))
+                        license_no.commit()
+
+                        val Lieasence_Expiry_Date = userPref.edit()
+                        Lieasence_Expiry_Date.putString(
+                            "Lieasence_Expiry_Date",
+                            jsonObjDriver.getString("Lieasence_Expiry_Date")
+                        )
+                        Lieasence_Expiry_Date.commit()
+
+                        val license_plate = userPref.edit()
+                        license_plate.putString(
+                            "license_plate",
+                            jsonObjDriver.getString("license_plate")
+                        )
+                        license_plate.commit()
+
+                        val Insurance = userPref.edit()
+                        Insurance.putString("Insurance", jsonObjDriver.getString("Insurance"))
+                        Insurance.commit()
+
+                        val Car_Model = userPref.edit()
+                        Car_Model.putString("Car_Model", jsonObjDriver.getString("Car_Model"))
+                        Car_Model.commit()
+
+                        val Car_Make = userPref.edit()
+                        Car_Make.putString("Car_Make", jsonObjDriver.getString("Car_Make"))
+                        Car_Make.commit()
+
+                        val car_type = userPref.edit()
+                        car_type.putString("car_type", jsonObjDriver.getString("car_type"))
+                        car_type.commit()
+
+                        val car_no = userPref.edit()
+                        car_no.putString("car_no", jsonObjDriver.getString("car_no"))
+                        car_no.commit()
+
+                        val Seating_Capacity = userPref.edit()
+                        Seating_Capacity.putString(
+                            "Seating_Capacity",
+                            jsonObjDriver.getString("Seating_Capacity")
+                        )
+                        Seating_Capacity.commit()
+
+                        val image = userPref.edit()
+                        image.putString("image", jsonObjDriver.getString("image"))
+                        image.commit()
+
+                        val status = userPref.edit()
+                        status.putString("status", jsonObjDriver.getString("status"))
+                        status.commit()
+
+                        val isLogin = userPref.edit()
+                        isLogin.putBoolean("is_login", true)
+                        isLogin.commit()
+
+                        val intent = Intent(this@RegisterActivity, DriverTripActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        startActivity(intent)
+                        finish()
+
+                    } else {
+                        Utility.showMKPanelErrorServer(
+                            this@RegisterActivity,
+                            jsonObject.getString("error code").toString(), jsonObject.getString("message").toString(),
+                            rlMainView,
+                            tvTitle,
+                            regularRoboto
+                        )
                     }
-                })
+                } catch (e1: Exception) {
+                    e1.printStackTrace()
+                }
+            })
 
     }
 
@@ -1074,10 +1507,14 @@ class RegisterActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener
                 options.inJustDecodeBounds = true
                 BitmapFactory.decodeFile(filePath, options)
                 var sampleSize = 0.0
-                val scaleByHeight = Math.abs(options.outHeight - targetHeight) >= Math.abs(options.outWidth - targetWidth)
+                val scaleByHeight =
+                    Math.abs(options.outHeight - targetHeight) >= Math.abs(options.outWidth - targetWidth)
                 if (options.outHeight * options.outWidth * 2 >= 1638) {
-                    sampleSize = (if (scaleByHeight) options.outHeight / targetHeight else options.outWidth / targetWidth).toDouble()
-                    sampleSize = Math.pow(2.0, Math.floor(Math.log(sampleSize) / Math.log(2.0))).toInt().toDouble()
+                    sampleSize =
+                        (if (scaleByHeight) options.outHeight / targetHeight else options.outWidth / targetWidth).toDouble()
+                    sampleSize =
+                        Math.pow(2.0, Math.floor(Math.log(sampleSize) / Math.log(2.0))).toInt()
+                            .toDouble()
                 }
                 options.inJustDecodeBounds = false
                 options.inTempStorage = ByteArray(128)

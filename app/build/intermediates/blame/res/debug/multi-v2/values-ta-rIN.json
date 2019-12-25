@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ta-rIN\\values-ta-rIN.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\KLIFF I5\\.gradle\\caches\\transforms-2\\files-2.1\\e2971354c70eedaeb921da72716aa0d2\\jetified-materialdatetimepicker-2.4.0\\res\\values-ta-rIN\\values-ta-rIN.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,166,275,393,477,589,721,842,957,1064,1172,1273",
+                        "endColumns": "60,108,117,83,111,131,120,114,106,107,100,101",
+                        "endOffsets": "161,270,388,472,584,716,837,952,1059,1167,1268,1370"
+                    }
+                }
+            ]
+        }
+    ]
+}

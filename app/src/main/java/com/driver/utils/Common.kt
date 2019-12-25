@@ -503,7 +503,7 @@ class Common {
                             Log.d("connected", "connected error= " + mSocket.connected())
                             //socketConnection();
                         } else {
-                            Log.d("connected", "connected three= " + mSocket.connected())
+                            Log.d("connected", "connected three=" + mSocket.connected())
                         }
                     }
                 }
@@ -512,7 +512,6 @@ class Common {
         }
 
         private fun searchedDriverDetail(activity: Activity) {
-
             socket!!.on("Searched Driver Detail") { args ->
                 activity.runOnUiThread {
                     val data = args[0] as JSONObject

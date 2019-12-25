@@ -1,0 +1,1342 @@
+[
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_insuarance_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\insuarance_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_filter_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\filter_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-large-hdpi\\background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_user_img_bg.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\user_img_bg.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_finish_trip.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\activity_finish_trip.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_mobile_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\mobile_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_status_driver_unavailable.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\status_driver_unavailable.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_password_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\password_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_truck_icon_side.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\truck_icon_side.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_dob_rejecter_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\dob_rejecter_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_filter_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\filter_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_vehicle_active.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\vehicle_active.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_status_waiting.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\status_waiting.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_icon_changepassword.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\icon_changepassword.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_heading_blank_btn.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\heading_blank_btn.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_filter_check_box.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\filter_check_box.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_register.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_legal.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\legal.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\anim_slide_in.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\anim\\slide_in.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_address_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\address_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-mdpi_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-large-mdpi\\background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_driver_status_check.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\driver_status_check.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_checkbox_unchecked.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\checkbox_unchecked.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_personal_active.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\personal_active.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_nevigation_arrow_right.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\nevigation_arrow_right.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_icon.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\icon.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_user_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\user_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_status_pending.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\status_pending.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_status_driver_cancelled.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\status_driver_cancelled.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_heading_blank_btn.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\heading_blank_btn.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_accept_reject_dialog_panel.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\accept_reject_dialog_panel.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_icon_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\icon_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_cancelled_stemp.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\cancelled_stemp.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\raw_timmer_mussic.mp3.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\raw\\timmer_mussic.mp3"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_checkbox_checked.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\checkbox_checked.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_home.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\activity_home.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_status_completed.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\status_completed.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_legal_active.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\legal_active.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_blank_rounded_image.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\blank_rounded_image.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_confirm_password_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\confirm_password_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_textbox_bottom_line.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\textbox_bottom_line.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_vertical_sep.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\vertical_sep.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_icon_email.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\icon_email.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_apply_button.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\apply_button.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_license_plate.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\license_plate.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_dob_rejecter_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\dob_rejecter_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_to_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\to_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_status_pending.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\status_pending.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_vehicle.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\vehicle.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_active_indicator_register.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\active_indicator_register.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_password_icon_reg.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\password_icon_reg.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_status_completed.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\status_completed.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_status_driver_arrived.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\status_driver_arrived.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_personal_active.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\personal_active.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_icon_mobile.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\icon_mobile.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_cab_popup.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\activity_cab_popup.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_status_pending.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\status_pending.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_user_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\user_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_legal.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\legal.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_vehicle_active.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\vehicle_active.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_name_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\name_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_apply_button.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\apply_button.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_background_register.jpg.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\background_register.jpg"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_avatar.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\avatar.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-xxhdpi_splash_screen.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-large-xxhdpi\\splash_screen.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_cancel_button.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\cancel_button.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_user_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\user_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_legal.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\legal.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_dob_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\dob_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_dob_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\dob_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_address_seprator.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\address_seprator.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_filter_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\filter_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_license_plate.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\license_plate.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_icon_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\icon_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_menu_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\menu_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_status_waiting.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\status_waiting.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_status_driver_cancelled.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\status_driver_cancelled.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\xml_network_security.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\xml\\network_security.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_user_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\user_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_status_completed.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\status_completed.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_driving_licence_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\driving_licence_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_accept_reject_blank.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\accept_reject_blank.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-mdpi_splash_screen.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-large-mdpi\\splash_screen.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_insuarance_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\insuarance_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_cancel_button.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\cancel_button.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_address_seprator.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\address_seprator.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_legal.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\legal.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-xhdpi_splash_screen.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-large-xhdpi\\splash_screen.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_car_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\car_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_contact_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\contact_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_internetinfopanel.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\internetinfopanel.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_switch_on.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\switch_on.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_status_on_trip.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\status_on_trip.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_filter_popup_border.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\filter_popup_border.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_address_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\address_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_status_user_cancelled.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\status_user_cancelled.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-xxhdpi_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-large-xxhdpi\\background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_distance_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\distance_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_splash_screen.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\splash_screen.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_status_driver_unavailable.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\status_driver_unavailable.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_gender_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\gender_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_status_driver_arrived.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\status_driver_arrived.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_name_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\name_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_menu2.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\menu2.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_address_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\address_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_distance_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\distance_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_heading_blank_btn.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\heading_blank_btn.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_address_seprator.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\address_seprator.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ok_button.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\ok_button.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_active_indicator_register.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\active_indicator_register.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_checkbox_checked.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\checkbox_checked.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_checkbox_checked.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\checkbox_checked.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_status_accepted.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\status_accepted.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_cell_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\cell_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_distance_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\distance_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_name_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\name_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_status_on_trip.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\status_on_trip.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_dob_rejecter_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\dob_rejecter_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_blank_btn.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\blank_btn.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_status_driver_arrived.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\status_driver_arrived.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_personal.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\personal.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_vertical_sep.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\vertical_sep.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_driver_trip_detail.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\activity_driver_trip_detail.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_filter_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\filter_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_car_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\car_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_email.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\email.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\xml_file_provider.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\xml\\file_provider.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_status_user_cancelled.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\status_user_cancelled.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_close_btn.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\close_btn.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_vehicle_details_section_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\vehicle_details_section_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_email.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\email.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_change_password.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\activity_change_password.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_password_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\password_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_confirm_password_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\confirm_password_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_status_waiting.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\status_waiting.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_contact_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\contact_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_apply_button.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\apply_button.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_icon_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\icon_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_gender_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\gender_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_cancel_btn.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\cancel_btn.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_to_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\to_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_cancelled_stemp.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\cancelled_stemp.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_gender_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\gender_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_dob_rejecter_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\dob_rejecter_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_icon_logout.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\icon_logout.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_driving_licence_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\driving_licence_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_forgot.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\activity_forgot.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_cell_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\cell_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_contact_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\contact_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_blank_btn.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\blank_btn.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_driving_licence_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\driving_licence_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_gender_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\gender_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_close_btn.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\close_btn.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_license_plate.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\license_plate.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_insuarance_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\insuarance_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_vehicle.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\vehicle.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_avatar.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\avatar.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_car_type_layout.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\car_type_layout.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_status_accepted.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\status_accepted.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_redius_border.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\redius_border.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_status_completed.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\status_completed.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_back_button.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\back_button.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_avatar.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\avatar.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_active_indicator_register.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\active_indicator_register.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_next_btn_bg.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\next_btn_bg.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_status_pending.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\status_pending.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_left_menu.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\left_menu.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_personal.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\personal.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_password_icon_reg.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\password_icon_reg.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_driver_trip_layout.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\driver_trip_layout.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_personal.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\personal.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_car_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\car_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_close_btn.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\close_btn.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_menu_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\menu_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_status_waiting.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\status_waiting.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_address_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\address_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_custom_dialog.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\custom_dialog.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_prev.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\prev.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\anim_slide_up_map.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\anim\\slide_up_map.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_password_icon_reg.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\password_icon_reg.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_date_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\date_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_email.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\email.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_blank_rounded_image.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\blank_rounded_image.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_menu_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\menu_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_vehicle_active.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\vehicle_active.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_confirm_password_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\confirm_password_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\anim_anim_slide_in_right.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\anim\\anim_slide_in_right.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_date_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\date_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_textbox_bg.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\textbox_bg.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_cell_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\cell_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_status_driver_unavailable.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\status_driver_unavailable.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_heading_blank_btn.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\heading_blank_btn.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_icon_pending.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\icon_pending.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_logo.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\logo.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_status_accepted.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\status_accepted.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_splash.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_signin_signup_blank.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\signin_signup_blank.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_vertical_sep.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\vertical_sep.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_close_btn.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\close_btn.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_to_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\to_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_checkbox_unchecked.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\checkbox_unchecked.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_vehicle_details_section_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\vehicle_details_section_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_name_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\name_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_register_step_one.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\register_step_one.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_cancel_button.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\cancel_button.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_nevigation_arrow_white.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\nevigation_arrow_white.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_contact_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\contact_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_user_photo.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\user_photo.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_logo.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\logo.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_legal_active.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\legal_active.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_status_driver_cancelled.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\status_driver_cancelled.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_personal_active.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\personal_active.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_status_user_cancelled.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\status_user_cancelled.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_register_step_two.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\register_step_two.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_to_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\to_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_vertical_sep.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\vertical_sep.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_car_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\car_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_nevigation_arrow.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\nevigation_arrow.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_register_step_three.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\register_step_three.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\anim_slide_out.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\anim\\slide_out.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_cancelled_stemp.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\cancelled_stemp.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_legal_active.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\legal_active.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_cancel_button.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\cancel_button.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_icon_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\icon_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_insuarance_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\insuarance_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_vehicle.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\vehicle.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_icon_username.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\icon_username.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_splash_screen.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\splash_screen.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_checkbox_unchecked.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\checkbox_unchecked.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_blank_rounded_image.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\blank_rounded_image.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_password_icon_reg.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\password_icon_reg.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_status_on_trip.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\status_on_trip.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_loader_dialog.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\loader_dialog.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_blank_rounded_image.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\blank_rounded_image.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_accept_reject_blank.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\accept_reject_blank.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_splash_screen.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\splash_screen.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_checkbox_checked.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\checkbox_checked.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_logo.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\logo.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\anim_pull_in_right.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\anim\\pull_in_right.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_background_register.jpg.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\background_register.jpg"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_personal_active.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\personal_active.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_profile_edit.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\activity_profile_edit.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_personal.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\personal.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_driving_licence_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\driving_licence_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_dob_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\dob_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_login.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_active_indicator_register.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\active_indicator_register.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_distance_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\distance_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_mobile_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\mobile_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-xhdpi_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-large-xhdpi\\background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_avatar.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\avatar.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_launcher_background.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_vehicle_details_section_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\vehicle_details_section_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_current_booking_border.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\current_booking_border.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\anim_anim_slide_in_left.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\anim\\anim_slide_in_left.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_cell_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\cell_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_insuarance_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\insuarance_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_splash_screen.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\splash_screen.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_blank_btn.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\blank_btn.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_status_user_cancelled.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\status_user_cancelled.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_status_accepted.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\status_accepted.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_driver_trip.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\activity_driver_trip.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_confirm_password_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\confirm_password_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_vehicle.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\vehicle.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_background_register.jpg.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\background_register.jpg"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_popup.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\popup.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_status_on_trip.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\status_on_trip.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_checkbox_unchecked.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\checkbox_unchecked.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_nevigation_arrow_right.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\nevigation_arrow_right.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_status_driver_arrived.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\status_driver_arrived.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-large-hdpi_splash_screen.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-large-hdpi\\splash_screen.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_license_plate.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\license_plate.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_password_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\password_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_logo.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\logo.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_cartype_dialog.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\cartype_dialog.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_accept_reject_blank.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\accept_reject_blank.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_accept_reject_blank.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\accept_reject_blank.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_menu_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\menu_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_nevigation_arrow_right.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\nevigation_arrow_right.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_legal_active.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\legal_active.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_date_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\date_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_blank_btn.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\blank_btn.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_date_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\date_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_password_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-hdpi\\password_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_license_plate.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\license_plate.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_dob_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\dob_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_address_seprator.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\address_seprator.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_vehicle_details_section_background.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\vehicle_details_section_background.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_background_register.jpg.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\background_register.jpg"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_all_trip_filter_dialog.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\all_trip_filter_dialog.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_apply_button.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\apply_button.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_nevigation_arrow_right.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\nevigation_arrow_right.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\anim_push_out_left.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\anim\\push_out_left.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_switch_off.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\switch_off.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_mobile_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\mobile_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_icon_done.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\icon_done.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_mk_dialog_panel.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\mk_dialog_panel.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\layout_notify_alert.xml.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\layout\\notify_alert.xml"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_mobile_icon.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\mobile_icon.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable_next.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable\\next.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_cancelled_stemp.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\cancelled_stemp.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_vehicle_active.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\vehicle_active.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_email.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xxhdpi\\email.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_status_driver_unavailable.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-xhdpi\\status_driver_unavailable.png"
+    },
+    {
+        "merged": "D:\\Android projects\\LetsGoDriver\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_status_driver_cancelled.png.flat",
+        "source": "D:\\Android projects\\LetsGoDriver\\app\\src\\main\\res\\drawable-mdpi\\status_driver_cancelled.png"
+    }
+]

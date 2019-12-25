@@ -862,7 +862,7 @@ class ProfileEditActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
                             finish()
                         } else if (jsonObject.has("status") && jsonObject.getString("status") == "false") {
 
-                            Utility.showMKPanelErrorServer(this@ProfileEditActivity, jsonObject.getString("error code").toString(), rlMainView, tvTitle, regularRoboto)
+                            Utility.showMKPanelErrorServer(this@ProfileEditActivity, jsonObject.getString("error code").toString(), jsonObject.getString("message"), rlMainView, tvTitle, regularRoboto)
 
                             if (jsonObject.has("Isactive") && jsonObject.getString("Isactive") == "Inactive") {
 
@@ -879,7 +879,7 @@ class ProfileEditActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
                                 }, 2500)
                             }
                         } else if (jsonObject.has("status") && jsonObject.getString("status") == "failed") {
-                            Utility.showMKPanelErrorServer(this@ProfileEditActivity, jsonObject.getString("error code").toString(), rlMainView, tvTitle, regularRoboto)
+                            Utility.showMKPanelErrorServer(this@ProfileEditActivity, jsonObject.getString("error code").toString(), jsonObject.getString("message"), rlMainView, tvTitle, regularRoboto)
                         }
                     } catch (e1: Exception) {
                         e1.printStackTrace()

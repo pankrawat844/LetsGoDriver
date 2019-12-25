@@ -269,11 +269,11 @@ class LoginActivity : AppCompatActivity() {
                             finish()
 
                         } else if (jsonObject.has("status") && jsonObject.getString("status") == "failed") {
-                            Utility.showMKPanelErrorServer(this@LoginActivity, jsonObject.getString("error code").toString(), rlMainView, tvTitle, regularRoboto)
+                            Utility.showMKPanelErrorServer(this@LoginActivity, jsonObject.getString("error code").toString(),jsonObject.getString("message"), rlMainView, tvTitle, regularRoboto)
                         } else if (jsonObject.has("status") && jsonObject.getString("status") == "failed") {
-                            Utility.showMKPanelErrorServer(this@LoginActivity, jsonObject.getString("error code").toString(), rlMainView, tvTitle, regularRoboto)
+                            Utility.showMKPanelErrorServer(this@LoginActivity, jsonObject.getString("error code").toString(),jsonObject.getString("message").toString(), rlMainView, tvTitle, regularRoboto)
                         } else {
-                            Utility.showMKPanelErrorServer(this@LoginActivity, jsonObject.getString("error code").toString(), rlMainView, tvTitle, regularRoboto)
+                            Utility.showMKPanelErrorServer(this@LoginActivity, jsonObject.getString("error code").toString(),jsonObject.getString("message"), rlMainView, tvTitle, regularRoboto)
                         }
                     } catch (e1: Exception) {
                         e1.printStackTrace()
