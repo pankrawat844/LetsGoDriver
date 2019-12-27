@@ -126,7 +126,6 @@ class Common {
                             emitObj.put("car_type", userPref.getString("car_type", ""))
                             emitObj.put("isdevice", "1")
                             Log.d("emitobj", "emitobj = $emitObj")
-
                             socket!!.emit("Create Driver Data", emitObj)
                             socket!!.disconnect()
 

@@ -123,7 +123,7 @@ class SplashActivity : AppCompatActivity() {
                             if (userPref.getBoolean("is_login", false)) {
                                 Handler().postDelayed({
 //                                    val intent = Intent(this@SplashActivity, DriverTripActivity::class.java)
-                                    val intent = Intent(this@SplashActivity, HomeActivity::class.java)
+                                    val intent = Intent(this@SplashActivity, DriverTripActivity::class.java)
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                                     startActivity(intent)

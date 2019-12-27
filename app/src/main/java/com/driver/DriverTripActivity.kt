@@ -518,10 +518,7 @@ class DriverTripActivity : AppCompatActivity(), DriverAllTripAdapter.OnAllTripCl
             loader.show()
             val driverAllTripFeed = driverAllTripArray!![position]
             val DrvBookingUrl =
-                Url.DriverAcceptTripUrl + "?booking_id=" + driverAllTripFeed.id + "&driver_id=" + userPref.getString(
-                    "id",
-                    ""
-                )
+                Url.DriverAcceptTripUrl + "?booking_id=" + driverAllTripFeed.id + "&driver_id=" + userPref.getString("id", "")
             Log.d("DrvBookingUrl", "DrvBookingUrl =$DrvBookingUrl")
             Ion.with(this@DriverTripActivity)
                 .load(DrvBookingUrl)

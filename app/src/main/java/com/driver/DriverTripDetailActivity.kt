@@ -375,6 +375,7 @@ class DriverTripDetailActivity : AppCompatActivity() {
     }
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
         Log.d("requestCode", "DETAIL_REQUEST DriverDetail = $requestCode==$resultCode")
         if (requestCode == 1) {
             if (data != null) {
